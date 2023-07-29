@@ -9,8 +9,8 @@ function App() {
   const [user, setLogin] = useState({});
 
   return (
-    <div className="App">
-      <Router>
+    <div className="App" >
+      <Router basename='/'>
         <Routes>
           <Route
             exact

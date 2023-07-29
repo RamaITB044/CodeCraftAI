@@ -1,0 +1,210 @@
+.Landing {
+  background-color: var(--landing-bg);
+  width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+.Landing #gradient {
+  background: var(--btn-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.Landing .navbar {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Landing .navbar-content {
+  max-width: 1200px;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.Landing .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.Landing .nav-btn {
+  padding: 8px 20px;
+  background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
+}
+.Landing .hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.Landing .hero .hero-content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px 0px;
+  display: flex;
+  gap: 70px;
+  align-items: center;
+}
+.Landing .hero .hero-content .title h1 {
+  color: var(--text-primary);
+  font-size: 128px;
+  font-weight: 700;
+  line-height: 100%;
+}
+.Landing .hero .hero-content .title {
+  width: 564px;
+}
+.Landing .hero .hero-content .sub-title {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 20px;
+}
+.Landing .hero-graphics {
+  margin-top: -80px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.Landing .hero-graphics img {
+  width: 100%;
+}
+.Landing .hero-graphics img:nth-child(2) {
+  margin: 0px auto;
+  width: 50%;
+  display: inline-block;
+  margin-top: -280px;
+  margin-bottom: -280px;
+}
+.Landing .intro {
+  width: 100%;
+  padding: 150px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.Landing .intro .intro-content {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+}
+.Landing .intro .intro-desc,
+.Landing .intro .intro-graphics {
+  max-width: 50%;
+}
+.Landing .intro .intro-desc .intro-title {
+  font-weight: 600;
+  font-size: 50px;
+  padding-bottom: 25px;
+}
+.Landing .intro .intro-desc .intro-sub-title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--text-secondary);
+}
+.Landing .intro .intro-graphic {
+  text-align: center;
+}
+.Landing .intro .intro-graphic img {
+  display: inline-block;
+  width: 100%;
+}
+.Landing .playground {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
+  color: white;
+}
+.Landing .playground .playground-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  background-color: var(--landing-card);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0px;
+  background-image: url("../../assets/images/dotted_grid.svg");
+  background-repeat: no-repeat;
+}
+.Landing .playground .playground-content .playground-graphic {
+  box-sizing: border-box;
+  width: 60%;
+  position: relative;
+}
+.Landing .playground .playground-content .playground-graphic img:nth-child(1) {
+  width: 120%;
+  margin-left: -200px;
+  box-shadow: -21px 14px 15px 2px rgba(0, 0, 0, 0.25);
+}
+.Landing .playground .playground-content .playground-graphic img:nth-child(2) {
+  height: 400px;
+  position: absolute;
+  width: 100%;
+  margin-top: 10%;
+  margin-left: -60%;
+  filter: drop-shadow(-17px 21px 21px rgba(0, 0, 0, 0.4));
+}
+.Landing .playground .playground-content .playground-desc {
+  box-sizing: border-box;
+  width: 40%;
+  padding: 40px;
+}
+.Landing .playground .playground-content .playground-desc .playground-title {
+  font-weight: 600;
+  font-size: 50px;
+}
+.Landing .playground .playground-content .playground-desc .playground-sub-title {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+.Landing .features {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
+  color: white;
+}
+.Landing .features .feature-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Landing .features .feature-content .feature-title {
+  font-size: 50px;
+  font-weight: 600;
+  text-align: center;
+}
+.Landing .features .feature-content .feature-sub-title {
+  font-size: 20px;
+  max-width: 800px;
+  width: 100%;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.Landing .features .feature-content .card-con {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  gap: 20px;
+}
+.Landing .features .feature-content .card-con .card {
+  width: 290px;
+  padding: 20px;
+  background-color: var(--landing-card);
+  border: 10px;
+}/*# sourceMappingURL=Landing.css.map */

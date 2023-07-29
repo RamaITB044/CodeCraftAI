@@ -1,0 +1,1 @@
+// Function to calculate user credits
