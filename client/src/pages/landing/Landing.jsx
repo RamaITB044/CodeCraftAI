@@ -24,10 +24,10 @@ const Landing = () => {
     
       <nav className="navbar">
         <div className="navbar-content">
-          <img src={fullLogo} alt="logo" />
+          <img src={fullLogo} alt="logo"/>
           <div className="nav-links">
-            <div><a href=""> Pricing</a></div>
-            <div><a href="">Feature</a></div>
+            <div onClick={()=>navigate("/pricing")}>Pricing</div>
+            <div>Feature</div>
             <a href=""><div className="nav-btn">Use Now</div></a>
           </div>
         </div>

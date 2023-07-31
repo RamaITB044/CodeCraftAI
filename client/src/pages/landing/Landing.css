@@ -18,9 +18,10 @@
 .Landing .navbar-content {
   max-width: 1200px;
   width: 100%;
-  color: white;
+  color: var(--text-primary);
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
 }
 .Landing .nav-links {
   display: flex;
@@ -28,11 +29,15 @@
   gap: 20px;
 }
 .Landing .nav-btn {
-  padding: 8px 20px;
+  padding: 10px 24px;
   background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
-  color: white;
+  color: 0px 0;
+  color: var(--text-primary);
   border-radius: 5px;
-  box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
+}
+.Landing .nav-btn:hover {
+  box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+  transition: 0.3s;
 }
 .Landing .hero {
   width: 100%;
@@ -77,6 +82,7 @@
   display: inline-block;
   margin-top: -280px;
   margin-bottom: -280px;
+  transform: rotate(180deg);
 }
 .Landing .intro {
   width: 100%;
@@ -84,7 +90,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: 0px 0;
+  color: var(--text-primary);
 }
 .Landing .intro .intro-content {
   max-width: 1200px;
@@ -118,8 +125,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0px;
-  color: white;
+  padding: 100px 0;
+  color: var(--text-primary);
 }
 .Landing .playground .playground-content {
   max-width: 1200px;
@@ -171,7 +178,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 0px;
-  color: white;
+  color: var(--text-primary);
 }
 .Landing .features .feature-content {
   max-width: 1200px;
@@ -200,11 +207,80 @@
   align-items: center;
   justify-content: center;
   padding-top: 40px;
-  gap: 20px;
+  gap: 10px;
 }
 .Landing .features .feature-content .card-con .card {
-  width: 290px;
+  width: 250px;
   padding: 20px;
   background-color: var(--landing-card);
-  border: 10px;
+  border-radius: 10px;
+  min-height: 250px;
+}
+.Landing .features .feature-content .card-con .card .card-title {
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 10px;
+}
+.Landing .features .feature-content .card-con .card .card-sub-title {
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 10px;
+  color: var(--text-secondary);
+}
+.Landing .features .feature-content .card-con .card:hover {
+  background-color: #191a24;
+  transition: 0.5s;
+}
+.Landing .join {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 300px 0px;
+  color: var(--text-primary);
+  background-image: url("../../assets/images/dotted-circle.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.Landing .join .join-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Landing .join .join-content .join-title {
+  font-size: 50px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 600px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.Landing .join .join-content .join-btn {
+  font-size: 18px;
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  padding: 10px 30px;
+  background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+  color: 0px 0;
+  color: var(--text-primary);
+  border-radius: 5px;
+  box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
+}
+.Landing .footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Landing .footer .footer-content {
+  max-width: 1200px;
+  width: 100%;
+}
+.Landing .footer .footer-content img {
+  width: 100%;
 }/*# sourceMappingURL=Landing.css.map */

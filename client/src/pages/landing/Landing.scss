@@ -20,10 +20,10 @@
   .navbar-content {
     max-width: 1200px;
     width: 100%;
-    color: 00px 0;
     color: var(--text-primary);
     display: flex;
     justify-content: space-between;
+    font-size: 16px;
   }
 
   .nav-links {
@@ -33,12 +33,16 @@
   }
 
   .nav-btn {
-    padding: 8px 20px;
+    padding: 10px 24px;
     background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
     color: 00px 0;
     color: var(--text-primary);
     border-radius: 5px;
-    box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
+
+    &:hover {
+      box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+      transition: 0.3s;
+    }
   }
 
   .hero {
@@ -257,7 +261,7 @@
           background-color: var(--landing-card);
           border-radius: 10px;
           min-height: 250px;
-          
+
 
           .card-title {
             font-size: 22px;
@@ -286,15 +290,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:300px 0px;
+    padding: 300px 0px;
     color: var(--text-primary);
     background-image: url("../../assets/images/dotted-circle.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    
 
-    .join-content{
+
+    .join-content {
       max-width: 1200px;
       width: 100%;
       display: flex;
@@ -302,7 +306,7 @@
       align-items: center;
       justify-content: center;
 
-      .join-title{
+      .join-title {
         font-size: 50px;
         font-weight: 600;
         text-align: center;
@@ -311,7 +315,7 @@
         padding-bottom: 20px;
       }
 
-      .join-btn{
+      .join-btn {
         font-size: 18px;
         text-align: center;
         width: 150px;
@@ -323,21 +327,21 @@
         border-radius: 5px;
         box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
       }
-      
+
     }
   }
 
-  .footer{
+  .footer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .footer-content{
+    .footer-content {
       max-width: 1200px;
       width: 100%;
 
-      img{
+      img {
         width: 100%;
       }
     }
