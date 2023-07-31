@@ -4,7 +4,6 @@
   padding: 0px 10px;
   box-sizing: border-box;
 
-
   #gradient {
     background: var(--btn-primary);
     -webkit-background-clip: text;
@@ -40,8 +39,6 @@
     color: var(--text-primary);
     border-radius: 5px;
     box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
-
-
   }
 
   .hero {
@@ -259,6 +256,8 @@
           padding: 20px;
           background-color: var(--landing-card);
           border-radius: 10px;
+          min-height: 250px;
+          
 
           .card-title {
             font-size: 22px;
@@ -325,6 +324,22 @@
         box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
       }
       
+    }
+  }
+
+  .footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .footer-content{
+      max-width: 1200px;
+      width: 100%;
+
+      img{
+        width: 100%;
+      }
     }
   }
 }

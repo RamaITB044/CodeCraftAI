@@ -21,7 +21,7 @@ const Landing = () => {
   const navigate = useNavigate()
   return (
     <div className="Landing">
-
+    
       <nav className="navbar">
         <div className="navbar-content">
           <img src={fullLogo} alt="logo" />
@@ -103,7 +103,7 @@ const Landing = () => {
                 Code Optimization
               </p>
               <p className='card-sub-title'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptates dolore explicabo quo velit blanditiis qui provident id quidem ea? Aperiam voluptatum quia placeat corporis quos tempore consequuntur, possimus nihil.
+              Get more out of your code with Codz's intelligent optimization algorithms, designed to boost performance and reduce bloat.
               </p>
             </div>
             <div className='card'>
@@ -112,7 +112,7 @@ const Landing = () => {
                 Code Generation
               </p>
               <p className='card-sub-title'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptates dolore explicabo quo velit blanditiis qui provident id quidem ea? Aperiam voluptatum quia placeat corporis quos tempore consequuntur, possimus nihil.
+              From simple functions to complex algorithms, Codz's code generation feature makes it easy to generate high-quality code quickly and easily.
               </p>
             </div>
             <div className='card'>
@@ -121,7 +121,7 @@ const Landing = () => {
                 Code Debugging
               </p>
               <p className='card-sub-title'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptates dolore explicabo quo velit blanditiis qui provident id quidem ea? Aperiam voluptatum quia placeat corporis quos tempore consequuntur, possimus nihil.
+              Don't let bugs slow you down - with Codz's code debugging feature, you can quickly identify and solve issues in your code.
               </p>
             </div>
             <div className='card'>
@@ -130,7 +130,7 @@ const Landing = () => {
                 Code Summarization
               </p>
               <p className='card-sub-title'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptates dolore explicabo quo velit blanditiis qui provident id quidem ea? Aperiam voluptatum quia placeat corporis quos tempore consequuntur, possimus nihil.
+              Say goodbye to tedious code reviews - with Codz's code summarization feature, you can quickly understand the structure and flow of your code.
               </p>
             </div>
           </div>
@@ -147,6 +147,12 @@ const Landing = () => {
           <a href=""><div className="join-btn">Join Now</div></a>
         </div>
       </section>
+
+      <footer className='footer'>
+        <div className="footer-content">
+          <img src={codz_grid} alt="Grid" />
+        </div>
+      </footer>
 
     </div>
   )
