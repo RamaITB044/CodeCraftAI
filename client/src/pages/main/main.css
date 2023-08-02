@@ -1,1 +1,7 @@
-/*# sourceMappingURL=main.css.map */
+.Main {
+  width: 100%;
+  display: flex;
+  background-color: var(--app-bg);
+  padding: 10px;
+  box-sizing: border-box;
+}/*# sourceMappingURL=Main.css.map */

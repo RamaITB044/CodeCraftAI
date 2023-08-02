@@ -1,0 +1,39 @@
+.Sidebar {
+  margin-left: 10px;
+  height: calc(100vh - 20px);
+  background-color: var(--app-primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 18px;
+  box-sizing: border-box;
+}
+.Sidebar .logo {
+  padding-left: 5px;
+}
+.Sidebar .logo img {
+  width: 25px;
+}
+.Sidebar .routes-con {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Sidebar .routes-con .routes {
+  margin-top: 20px;
+}
+.Sidebar .routes-con .route-box {
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  border-radius: 5px;
+}
+.Sidebar .routes-con .route-box:hover {
+  background-color: #2C2E37;
+}/*# sourceMappingURL=Sidebar.css.map */

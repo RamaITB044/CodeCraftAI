@@ -13,7 +13,7 @@ import generation from '../../assets/icons/generation.svg'
 import summarization from '../../assets/icons/summarization.svg'
 import debugging from '../../assets/icons/debugging.svg'
 import optimization from '../../assets/icons/optimization.svg'
-import codz_logo from '../../assets/icons/codz-logo.svg'
+import codz_hero from '../../assets/images/codz-hero.png'
 import dotted_circle from '../../assets/images/dotted-circle.svg'
 import codz_grid from '../../assets/images/codz-grid.svg'
 
@@ -65,7 +65,7 @@ const Landing = () => {
             </p>
           </div>
           <div className="intro-graphic">
-            <img src={openai} alt="OpenAI" />
+            <img src={codz_hero} alt="codz-logo" />
           </div>
         </div>
       </section>
@@ -139,7 +139,7 @@ const Landing = () => {
 
       <section className="join">
         <div className="join-content">
-          <img src={codz_logo} alt="logo" />
+          <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}
           <p className="join-title">
             Unleash your ultimate coding powers using <span id='gradient'>Codz</span> today!

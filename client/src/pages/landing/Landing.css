@@ -90,13 +90,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: 0px 0;
   color: var(--text-primary);
 }
 .Landing .intro .intro-content {
   max-width: 1200px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .Landing .intro .intro-desc,
 .Landing .intro .intro-graphics {
@@ -118,7 +118,7 @@
 }
 .Landing .intro .intro-graphic img {
   display: inline-block;
-  width: 100%;
+  width: 80%;
 }
 .Landing .playground {
   width: 100%;
@@ -242,6 +242,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  margin-bottom: 20px;
 }
 .Landing .join .join-content {
   max-width: 1200px;
@@ -250,6 +251,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.Landing .join .join-content img {
+  width: 10%;
 }
 .Landing .join .join-content .join-title {
   font-size: 50px;

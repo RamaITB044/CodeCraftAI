@@ -1,11 +1,13 @@
 import React from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
+import Sidebar from '../../components/sidebar/Sidebar';
+import "./Main.scss"
 
 const Main = () => {
     const navigate = useNavigate();
     return (
         <div className='Main'>
-            <Navbar />
+            <Sidebar/>
             <Outlet />
         </div>
     )

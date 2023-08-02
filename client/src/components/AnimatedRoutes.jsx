@@ -5,6 +5,8 @@ import Landing from '../pages/landing/Landing';
 import Login from '../pages/login/Login';
 import Register from '../pages/register/Register';
 import Pricing from '../pages/pricing/Pricing';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Main from '../pages/main/Main';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -15,11 +17,9 @@ function AnimatedRoutes() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/pricing" element={<Pricing />} />
-                {/* <Route path="/app" element={<Main />}>
-                    <Route path="/app" element={<Home />} />
-                    <Route path="/app/write" element={<Write />} />
-                    <Route path="/app/story/:id" element={<Story />} />
-                </Route> */}
+                <Route path="/app" element={<Main />}>
+                    <Route path="/app" element={<Dashboard />} />
+                </Route>
             </Routes>
         </AnimatePresence>
     )

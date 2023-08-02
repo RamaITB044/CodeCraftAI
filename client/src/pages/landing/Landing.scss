@@ -107,13 +107,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: 00px 0;
     color: var(--text-primary);
 
     .intro-content {
       max-width: 1200px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
 
     .intro-desc,
@@ -142,7 +142,7 @@
 
     .intro-graphic img {
       display: inline-block;
-      width: 100%;
+      width: 80%;
     }
   }
 
@@ -296,6 +296,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    margin-bottom: 20px;
 
 
     .join-content {
@@ -305,6 +306,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      
+
+      img{
+        width: 10%;
+      }
 
       .join-title {
         font-size: 50px;
