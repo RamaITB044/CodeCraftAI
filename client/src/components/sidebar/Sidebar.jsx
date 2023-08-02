@@ -5,6 +5,7 @@ import logout from '../../assets/icons/logout.svg';
 import codz_logo from '../../assets/icons/app-logo.png';
 import './Sidebar.scss'
 import { sidebarRoutes } from './sidebarRoutes';
+import expand_icon from '../../assets/icons/expand.svg';
 
 const Sidebar = () => {
     const navigate = useNavigate()
@@ -17,17 +18,28 @@ const Sidebar = () => {
     const handleMouseLeave = () => {
         setIsExpanded(false);
     };
+
+    const handleExpand = () => {
+        setIsExpanded(!isExpanded);
+    }
+
     return (
         <motion.div
-            initial={{ width: 60 }}
-            animate={{ width: isExpanded ? 200 : 75 }}
+            initial={{ width: 75 }}
+            animate={{ width: isExpanded ? 200 : 75}}
             transition={{ duration: 0.3 }}
-            onHoverStart={handleHover}
-            onHoverEnd={handleMouseLeave}
             className="Sidebar">
+            
+            <img src={expand_icon}
+                alt="Toggle Sidebar"
+                className='toggle-sidebar'
+                onClick={handleExpand}
+                style={{transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}}
+            />
             
             <div className='logo'>
                 <img src={codz_logo} alt="Codz" />
+                {isExpanded && <p className="logo-name">Codz</p>}
             </div>
 
             <div className="routes-con">

@@ -2,8 +2,8 @@ import React from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Landing from '../pages/landing/Landing';
-import Login from '../pages/login/Login';
-import Register from '../pages/register/Register';
+import Login from '../pages/auth/Login';
+import Register from '../pages/auth/Register';
 import Pricing from '../pages/pricing/Pricing';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Main from '../pages/main/Main';

@@ -27,7 +27,6 @@ const Landing = () => {
           <img src={fullLogo} alt="logo"/>
           <div className="nav-links">
             <div onClick={()=>navigate("/pricing")}>Pricing</div>
-            <div>Feature</div>
             <a href=""><div className="nav-btn">Use Now</div></a>
           </div>
         </div>

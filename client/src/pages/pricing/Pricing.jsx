@@ -11,7 +11,6 @@ const Pricing = () => {
         <div className="navbar-content">
           <img src={fullLogo} alt="logo" onClick={() => navigate("/")}/>
           <div className="nav-links">
-            <div><a href="">Feature</a></div>
             <a href=""><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
@@ -74,7 +73,7 @@ const Pricing = () => {
           </div>
           <div className="card-features">
             <ul>
-              <li><span>Unlimmited File Saves</span></li>
+              <li><span>Unlimited File Saves</span></li>
               <li><span>2x free credits/week</span></li>
               <li><span>AI code optimization</span></li>
               <li><span>AI code summarization</span></li>
