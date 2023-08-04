@@ -30,7 +30,13 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    cursor:pointer;
   }
+
+  img{
+    cursor:pointer;
+  }
+
 
   .nav-btn {
     padding: 10px 24px;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Auth.scss'
 import fullLogo from '../../assets/icons/codz-full-logo.svg'
 import { Grid, Skeleton, Container, Center, Input } from '@mantine/core';
@@ -11,15 +12,16 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [profession, setProfession] = useState("");
+  const navigate = useNavigate()
 
   return (
     <div className='Register'>
-      <nav className="navbar">
+     <nav className="navbar">
         <div className="navbar-content">
-          <img src={fullLogo} alt="logo" />
+          <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
           <div className="nav-links">
-            <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a href=""><div className="nav-btn">Use Now</div></a>
+            <div onClick={()=>navigate("/pricing")}>Pricing</div>
+            <a onClick={()=>navigate("/register")}><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
       </nav>
@@ -33,8 +35,8 @@ const Register = () => {
 
           <div className="auth-card">
             <img src={codzLogo} alt="Codz Logo" />
-            <p className='heading'>Welcome</p>
-            <p className='sub-heading'>Signup to create your account</p>
+            <p className='heading'>Create an account</p>
+            <p className='sub-heading'>Sign up to create your account</p>
 
             <div className="auth-inp">
               <div className="inp-box">

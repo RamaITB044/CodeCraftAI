@@ -1,7 +1,7 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom"
 import './Pricing.scss'
 import fullLogo from '../../assets/icons/codz-full-logo.svg'
-import { useNavigate } from "react-router-dom"
 
 const Pricing = () => {
   const navigate = useNavigate();
@@ -9,9 +9,10 @@ const Pricing = () => {
     <div className='Pricing'>
       <nav className="navbar">
         <div className="navbar-content">
-          <img src={fullLogo} alt="logo" onClick={() => navigate("/")}/>
+          <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
           <div className="nav-links">
-            <a href=""><div className="nav-btn">Use Now</div></a>
+            <div onClick={()=>navigate("/pricing")}>Pricing</div>
+            <a onClick={()=>navigate("/register")}><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
       </nav>

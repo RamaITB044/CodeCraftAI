@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
 }
@@ -14,27 +14,39 @@
   font-size: 14px;
   font-family: 'Lexend', sans-serif;
 
-  
-  --landing-bg:#050810;
-  --landing-card:#131620;
-  --btn-primary:linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
-  --text-primary:#FFFF;
-  --text-secondary:#BFBFBF;
+
+  --landing-bg: #050810;
+  --landing-card: #131620;
+  --btn-primary: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+  --text-primary: #FFFF;
+  --text-secondary: #BFBFBF;
   --app-bg: #131517;
   --app-primary: #1E1F25;
 }
+
 body {
   margin: 0px;
   padding: 0px;
 }
 
 
-a{
+
+a {
   text-decoration: inherit;
   color: inherit;
-  
-  :hover{
+
+  :hover {
     cursor: pointer;
     text-decoration: inherit;
+  }
+}
+
+.nav-btn,
+.join-btn,
+.action-btn {
+  transition: 0.2s;
+
+  &:active {
+    transform: scale(0.98);
   }
 }

@@ -7,6 +7,7 @@ import Register from '../pages/auth/Register';
 import Pricing from '../pages/pricing/Pricing';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Main from '../pages/main/Main';
+import Playground from '../pages/playground/Playground';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -19,6 +20,8 @@ function AnimatedRoutes() {
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/app" element={<Main />}>
                     <Route path="/app" element={<Dashboard />} />
+                    <Route path="/app/playground" element={<Playground />} />
+                    <Route path="/app/pricing" element={<Pricing/>} />
                 </Route>
             </Routes>
         </AnimatePresence>

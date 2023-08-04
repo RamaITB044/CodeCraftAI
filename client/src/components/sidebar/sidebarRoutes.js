@@ -6,22 +6,22 @@ import playground from '../../assets/icons/playground-icon.svg';
 
 export const sidebarRoutes = [
     {
-        path: '/',
+        path: '/app',
         name: 'Dashboard',
         icon: dashboard_icon
     },
     {
-        path: '/playground',
+        path: '/app/playground',
         name: 'Playground',
         icon: playground
     },
     {
-        path: '/my-codes',
+        path: '/app/my-codes',
         name: 'My Codes',
         icon: my_codes
     },
     {
-        path: '/credit-store',
+        path: '/app/pricing',
         name: 'Credits',
         icon: credit_store
     },

@@ -1,0 +1,32 @@
+.ActionBar {
+    padding: 10px 20px;
+    background: #272830;
+    border-bottom: 1px solid #404040;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    // max-width: 450px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .action-btn {
+        padding: 10px 20px;
+        background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+        color: var(--text-primary);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &:hover {
+            box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    }
+}

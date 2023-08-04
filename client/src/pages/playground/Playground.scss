@@ -1,0 +1,17 @@
+.Playground{
+    width: 100%;
+
+    .card{
+        height: calc(100vh - 20px);
+        background-color: var(--app-primary);
+        border-radius: 10px;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #editor{
+        background-color: #1E1E1E;
+    }
+}
+
