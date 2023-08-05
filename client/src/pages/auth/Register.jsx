@@ -7,6 +7,9 @@ import codzLogo from '../../assets/icons/codz-logo.svg'
 import emailIcon from '../../assets/icons/email.svg'
 import workIcon from '../../assets/icons/work.svg'
 import userIcon from '../../assets/icons/user.svg'
+import loginCard from '../../assets/gradients/login-card.png'
+import loginLeft from '../../assets/gradients/login-left.png'
+import loginRight from '../../assets/gradients/login-right.png'
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +28,9 @@ const Register = () => {
           </div>
         </div>
       </nav>
-
+      <img src={loginLeft} className="login-left" alt="gradient" />
+      <img src={loginCard} className="login-center" alt="gradient" />
+      <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200}>
         <div className="auth-con">
           <div className="auth-title">
@@ -77,7 +82,7 @@ const Register = () => {
                   Register
             </div>
 
-            <p className='auth-link'>Already have an account? <a href="/login">Login</a></p>
+            <p className='auth-link'>Already have an account? <a onClick={()=>navigate("/login")}>Login</a></p>
           </div>
         </div>
       </Container>

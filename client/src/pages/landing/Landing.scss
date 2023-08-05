@@ -3,12 +3,35 @@
   width: 100%;
   padding: 0px 10px;
   box-sizing: border-box;
+  position:relative;
+  overflow-x:hidden;
 
   #gradient {
     background: var(--btn-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .hero-left{
+    position:absolute;
+    opacity:80%;
+    top:-450px;
+    left:-350px;
+    transform: rotate(45deg);
+  }
+  .hero-right{
+    position:absolute;
+    top:-450px;
+    right:-350px;
+    opacity:90%;
+  }
+  .hero-mid{
+    position:absolute;
+    top:300px;
+    right:-150px;
+    opacity:60%;
+  }
+  
 
   .navbar {
     height: 100px;
@@ -113,12 +136,18 @@
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
+    position: relative;
 
     .intro-content {
       max-width: 1200px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .intro-right{
+      position:absolute;
+      top:-560px;
     }
 
     .intro-desc,
@@ -158,6 +187,15 @@
     justify-content: center;
     padding: 100px 0;
     color: var(--text-primary);
+    position: relative;
+
+    .playground-left{
+      position:absolute;
+      top:100px;
+      left:-150px;
+      opacity:80%;
+      transform:rotate(180deg); 
+    }
 
     .playground-content {
       max-width: 1200px;
@@ -229,6 +267,7 @@
     padding: 100px 0px;
     color: var(--text-primary);
 
+    
     .feature-content {
       max-width: 1200px;
       width: 100%;
@@ -302,7 +341,15 @@
     background-size: contain;
     background-position: center;
     margin-bottom: 20px;
+    position:relative;
 
+    .join-mid{
+      position:absolute;
+      top:10px;
+      left:510px;
+      opacity:80%;
+      transform:rotate(180deg); 
+    }
 
     .join-content {
       max-width: 1200px;

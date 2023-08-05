@@ -62,6 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .navbar-content {
@@ -71,11 +72,14 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
+  z-index: 4;
+
+  img{
+    cursor:pointer;
+  }
 }
 
-img{
-  cursor:pointer;
-}
+
 
 .nav-links {
   display: flex;
@@ -105,6 +109,30 @@ img{
   min-height: 100vh;
   padding: 0px 10px;
   box-sizing: border-box;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.login-center{
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%);
+  top: -100px;
+}
+
+.login-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.login-right{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .auth-con {
@@ -115,6 +143,7 @@ img{
   justify-content: center;
   gap: 40px;
   padding-bottom: 50px;
+  
 }
 
 .auth-title {
@@ -137,6 +166,7 @@ img{
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
 
   .heading {
     padding-top: 10px;

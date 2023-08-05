@@ -4,10 +4,11 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Landing from '../pages/landing/Landing';
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
-import Pricing from '../pages/pricing/Pricing';
+import PricingBox from '../components/pricingBox/PricingBox';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Main from '../pages/main/Main';
 import Playground from '../pages/playground/Playground';
+import Pricing from '../pages/pricing/Pricing';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -21,7 +22,7 @@ function AnimatedRoutes() {
                 <Route path="/app" element={<Main />}>
                     <Route path="/app" element={<Dashboard />} />
                     <Route path="/app/playground" element={<Playground />} />
-                    <Route path="/app/pricing" element={<Pricing/>} />
+                    <Route path="/app/pricing" element={<PricingBox/>} />
                 </Route>
             </Routes>
         </AnimatePresence>

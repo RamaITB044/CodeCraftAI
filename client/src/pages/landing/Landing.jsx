@@ -16,6 +16,9 @@ import optimization from '../../assets/icons/optimization.svg'
 import codz_hero from '../../assets/images/codz-hero.png'
 import dotted_circle from '../../assets/images/dotted-circle.svg'
 import codz_grid from '../../assets/images/codz-grid.svg'
+import landingHero from '../../assets/gradients/landing-hero.png'
+import landingIntro from '../../assets/gradients/landing-intro.png'
+
 
 const Landing = () => {
   const navigate = useNavigate()
@@ -31,8 +34,12 @@ const Landing = () => {
           </div>
         </div>
       </nav>
-
+        <img className='hero-left' src={landingHero} alt="" />
+        <img className='hero-right' src={landingHero} alt="" />
+        <img className='hero-mid' src={landingHero} alt="" />
+        
       <section className="hero">
+     
         <div className="hero-content">
           <div className="title">
             <h1>
@@ -64,12 +71,14 @@ const Landing = () => {
             </p>
           </div>
           <div className="intro-graphic">
+          <img className='intro-right' src={landingIntro} alt="" />
             <img src={codz_hero} alt="codz-logo" />
           </div>
         </div>
       </section>
 
       <section className="playground">
+      <img className='playground-left' src={landingIntro} alt="" />
         <div className="playground-content">
           <div className="playground-graphic">
             <img src={playground} alt="Coding" />
@@ -86,6 +95,7 @@ const Landing = () => {
       </section>
 
       <section className="features">
+      
         <div className="feature-content">
           <p className="feature-title">
             Effortless Coding, Maximum Productivity
@@ -137,6 +147,7 @@ const Landing = () => {
       </section>
 
       <section className="join">
+      <img className='join-mid' src={landingIntro} alt="" />
         <div className="join-content">
           <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}

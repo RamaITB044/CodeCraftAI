@@ -7,11 +7,15 @@ import codzLogo from '../../assets/icons/codz-logo.svg'
 import emailIcon from '../../assets/icons/email.svg'
 import workIcon from '../../assets/icons/work.svg'
 import userIcon from '../../assets/icons/user.svg'
+import loginCard from '../../assets/gradients/login-card.png'
+import loginLeft from '../../assets/gradients/login-left.png'
+import loginRight from '../../assets/gradients/login-right.png'
 
 const Login = () => {
   const navigate = useNavigate()
   return (
     <div className='Login'>
+
       <nav className="navbar">
         <div className="navbar-content">
           <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
@@ -21,7 +25,9 @@ const Login = () => {
           </div>
         </div>
       </nav>
-
+      <img src={loginLeft} className="login-left" alt="gradient" />
+      <img src={loginCard} className="login-center" alt="gradient" />
+      <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200}>
         <div className="auth-con">
           <div className="auth-title">
@@ -50,13 +56,14 @@ const Login = () => {
             </div>
 
             <div className="auth-btn nav-btn">
-                  Register
+                  Login
             </div>
 
-            <p className='auth-link'>New to Codz? <a href="/register">Sign up</a></p>
+            <p className='auth-link'>New to Codz? <a onClick={()=>navigate("/register")}>Sign up</a></p>
           </div>
         </div>
       </Container>
+     
     </div>
   )
 }
