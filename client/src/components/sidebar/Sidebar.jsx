@@ -38,7 +38,7 @@ const Sidebar = () => {
             />
             
             <div className='logo'>
-                <img src={codz_logo} alt="Codz" />
+                <img src={codz_logo} alt="Codz" onClick={()=>navigate("/")} />
                 {isExpanded && <p className="logo-name">Codz</p>}
             </div>
 

@@ -10,9 +10,16 @@ import userIcon from '../../assets/icons/user.svg'
 import loginCard from '../../assets/gradients/login-card.png'
 import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
+import { login, logout} from '../../slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  
+  const dispatch = useDispatch();
+  const emailId = useSelector((state)=>state.user.value.email)
+
   return (
     <div className='Login'>
 
@@ -30,6 +37,7 @@ const Login = () => {
       <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200}>
         <div className="auth-con">
+          { emailId }
           <div className="auth-title">
             <p>Unleash Your Coding</p>
             <p>Powers Now!</p>
@@ -54,12 +62,13 @@ const Login = () => {
               </div>
 
             </div>
-
-            <div className="auth-btn nav-btn">
-                  Login
+            
+            <div className="auth-btn nav-btn" onClick={() => dispatch(login({email: email})) }>
+              Login
             </div>
 
             <p className='auth-link'>New to Codz? <a onClick={()=>navigate("/register")}>Sign up</a></p>
+            
           </div>
         </div>
       </Container>
