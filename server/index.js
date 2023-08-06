@@ -1,11 +1,33 @@
 const express = require("express");
-const aiRoute = require("./ai.route");
-const authRoute = require("./auth.route");
+const cors = require("cors");
+const morgan = require("morgan");
+const helmet = require("helmet");
+const compression = require("compression");
+require("dotenv").config();
+const { connectToDatabase } = require("./db");
+const rateLimiter = require("./middlewares/rateLimiter");
+const routes = require("./routes");
 
-const router = express.Router();
+const app = express();
+const port = process.env.PORT || 8082;
 
-router.use("/ai", aiRoute);
-router.use("/auth", authRoute);
-// router.use("/users", userRoute);
+app.use(compression());
+app.use(helmet());
+app.use(cors());
+app.use(rateLimiter);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
-module.exports = router;
+// Define routes below
+app.use("/api", routes);
+
+connectToDatabase().then(() => {
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+});
+
+// app.listen(port, () => {
+//     console.log(`Server listening on port ${port}`);
+// });

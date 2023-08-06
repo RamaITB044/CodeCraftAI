@@ -10,12 +10,55 @@ import userIcon from '../../assets/icons/user.svg'
 import loginCard from '../../assets/gradients/login-card.png'
 import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
+import Axios from 'axios'
+
+const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [profession, setProfession] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
+
+  const handleRegistration = async () => {
+    setLoading(true);
+    if (email === "" || name === "" || profession === "") {
+        alert("Please fill all the fields!");
+        setLoading(false);
+    } else {
+        //check valid email
+        if (!email.includes("@")) {
+            alert("Please enter a valid email !");
+            setLoading(false);
+            return;
+        }
+        try {
+            //checking if user exists
+            const check = await Axios.post(APP_SERVER + "/api/auth/check", {
+                email: email
+            });
+            if (check.data.status) {
+                setLoading(false);
+                return toast.error("User already exists");
+            }
+            const resp = await Axios.post(APP_SERVER + "/api/auth/register", {
+                email,
+                userName: name,
+                profession
+            });
+            if (resp.status === 201) {
+                alert("Registration Successful");
+                setLoading(false);
+                navigate("/login");
+            }
+        } catch (err) {
+            alert("Something went wrong!");
+            setLoading(false);
+            console.log(err);
+        }
+    }
+}
 
   return (
     <div className='Register'>
@@ -78,7 +121,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="auth-btn nav-btn">
+            <div className="auth-btn nav-btn" onClick={handleRegistration}>
                   Register
             </div>
 

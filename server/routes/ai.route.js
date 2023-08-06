@@ -14,30 +14,30 @@ router.post("/prompt", async (req, res) => {
     }
 });
 
-router.post("/optimize", authMiddleware, async (req, res) => {
-    const magicId = req.magicId;
+router.post("/optimize", async (req, res) => {
+    // const magicId = req.magicId;
     try {
-        const user = User.find({ magicId: magicId });
-        if (!user) {
-            return res.status(401).json({ error: "User not found" });
-        }
+        // const user = User.find({ magicId: magicId });
+        // if (!user) {
+        //     return res.status(401).json({ error: "User not found" });
+        // }
 
-        //check if user has more than 0 credits
-        if (user.credits.value <= 0) {
-            return res.status(401).json({ error: "Not enough credits" });
-        }
+        // //check if user has more than 0 credits
+        // if (user.credits.value <= 0) {
+        //     return res.status(401).json({ error: "Not enough credits" });
+        // }
 
-        let initialPrompt = `Can you optimize the code? 
-        Also provide meaningful comments where necessary and put those comments inside the code. 
-        Just give me the code only and nothing else. \n\n`;
+        let initialPrompt = `\n\nCan you optimize the code? 
+        Also provide meaningful comments where necessary and put those comments inside the code. Each line should have a maximum of 15 words comment.
+        Just give me the code only and nothing else. \n`;
 
         const resp = await gpt(initialPrompt + req.body.prompt);
 
-        //deduct 1 credit from user
-        user.credits.value -= 1;
-        //increase total optimizations
-        user.total_optimizations += 1;
-        await user.save();
+        // //deduct 1 credit from user
+        // user.credits.value -= 1;
+        // //increase total optimizations
+        // user.total_optimizations += 1;
+        // await user.save();
 
         return res.status(200).json({ text: resp });
     } catch (error) {

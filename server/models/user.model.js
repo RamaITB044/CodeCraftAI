@@ -4,32 +4,43 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     magic_id: {
         type: String,
-        required: true,
+        default: "",
+        unique: true,
     },
     email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    userName:{
+        type: String,
+        required: true,
+    },
+    profession:{
         type: String,
         required: true,
     },
     theme: {
         type: Object
     },
-    credit: {
+    credits: {
         value: {
-            default: 10,
+            default: 100,
             type: Number,
         },
         last_updated: {
             type: Date,
+            default: Date.now(),
         },
         expiry_date: {
             type: Date,
         }
     },
-    total_optimizations: {
+    total_code_optimizations: {
         default: 0,
         type: Number,
     },
-    total_debugs: {
+    total_code_debuggings: {
         default: 0,
         type: Number,
     },
@@ -37,11 +48,18 @@ const userSchema = new Schema({
         default: 0,
         type: Number,
     },
+    total_code_summarizations:{
+        default: 0,
+        type: Number,
+    },
+    total_code_translations:{
+        default: 0,
+        type: Number,
+    },
     codes: [
         {
             code_id: {
                 type: String,
-                required: true,
             },
             code: {
                 type: String,
@@ -51,42 +69,34 @@ const userSchema = new Schema({
             },
             file_name: {
                 type: String,
-                required: true,
-            },
-            total_lines: {
-                type: Number,
-                required: true,
             },
             last_edited: {
                 type: Date,
-                required: true,
+                default: Date.now(),
             },
             created_at: {
                 type: Date,
-                required: true,
+                default: Date.now(),
             }
         }
     ],
     plan: {
-        planName: {
+        plan_name: {
             type: String,
             enum: ["Basic", "Pro"],
-            required: true
+            default: "Basic",
         },
         price: {
             type: Number,
-            required: true
         },
-        startDate: {
+        start_date: {
             type: Date,
-            required: true
         },
-        endDate: {
+        end_date: {
             type: Date,
-            required: true
         }
     }
 });
 
-const userModel = mongoose.model('users', userSchema);
-module.exports = userModel;
+const User = mongoose.model('users', userSchema);
+module.exports = User;

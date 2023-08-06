@@ -1,16 +1,10 @@
 import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
-import Sidebar from '../../components/sidebar/Sidebar';
-import "./Main.scss"
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.scss'
 
-const Main = () => {
-    const navigate = useNavigate();
-    return (
-        <div className='Main'>
-            <Sidebar/>
-            <Outlet />
-        </div>
-    )
-}
-
-export default Main
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)

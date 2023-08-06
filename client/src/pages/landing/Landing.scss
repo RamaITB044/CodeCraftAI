@@ -112,6 +112,38 @@
     margin-top: -80px;
     box-sizing: border-box;
     text-align: center;
+    overflow: hidden;
+
+.codingimg{
+  background: url("../../assets/images/coding.svg") repeat-x;
+  height: 400px;
+  width: 76800px;
+  animation: slide 500s linear infinite;
+
+  &:hover{
+    background:url("../../assets/images/coding2.svg") repeat-x;
+    transition: 0.2s;
+  }
+}
+.nextimg{
+  background: url("../../assets/images/next-gen.svg") repeat-x;
+  height: 272px;
+  width: 76800px;
+  animation: slide 500s linear infinite;
+
+  &:hover{
+    background:url("../../assets/images/next-gen2.svg") repeat-x;
+    transition: 0.2s;
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-76800px);
+  }
+}
 
 
     img {

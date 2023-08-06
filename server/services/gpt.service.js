@@ -11,11 +11,11 @@ async function gpt(prompt){
     try{
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: prompt,
+            prompt: prompt+"Code: ",
             temperature: 0.5,
-            max_tokens: 100
+            max_tokens: 2000,
         });
-        // console.log(resp.data);
+        console.log(completion.data);
         return completion.data.choices[0].text;
     }catch(error){
         console.log(error);

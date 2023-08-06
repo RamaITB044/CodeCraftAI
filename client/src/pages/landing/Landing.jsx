@@ -44,7 +44,7 @@ const Landing = () => {
           <div className="title">
             <h1>
               THE
-              FUTURE.
+              FUTURE OF
             </h1>
           </div>
           <div className="sub-title">
@@ -56,9 +56,8 @@ const Landing = () => {
       </section>
 
       <section className="hero-graphics">
-        <img src={next_gen} alt="Next-Gen" />
-        <img src={dmatter} alt="Dark Matter" />
-        <img src={coding} alt="Coding" />
+        <div className="nextimg"></div>
+        <div className="codingimg"></div>
       </section>
 
       <section className="intro">

@@ -1,0 +1,22 @@
+.Editor-controls{
+    width: 100%;
+    height: 50px;
+    background-color: var(--app-bg);
+
+    .control-btn{
+        max-width: 60px;
+        padding: 10px 20px;
+        background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+        color: var(--text-primary);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    }
+}

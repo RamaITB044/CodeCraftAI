@@ -43,12 +43,7 @@ const Dashboard = () => {
             </div>
           </Grid.Col>
 
-          <Grid.Col xs={8}>
-            <div className='card'>
-
-            </div>
-          </Grid.Col>
-          <Grid.Col xs={4}>
+          <Grid.Col xs={12}>
             <div className='card'>
 
             </div>

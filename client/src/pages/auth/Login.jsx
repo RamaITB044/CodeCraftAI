@@ -10,25 +10,87 @@ import userIcon from '../../assets/icons/user.svg'
 import loginCard from '../../assets/gradients/login-card.png'
 import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
-import { login, logout} from '../../slices/authSlice';
+import { login, logout } from '../../slices/authSlice';
 import { useDispatch, useSelector } from 'react-redux'
+import { magic } from '../../utils/magic';
+import Cookies from 'js-cookie'
+
+
+const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
-  const emailId = useSelector((state)=>state.user.value.email)
+  // const emailId = useSelector((state)=>state.auth.value.email)
+
+  const handleLogin = async () => {
+    setLoading(true);
+    if (email === "") {
+      alert("Please provide your email!");
+      setLoading(false);
+    } else {
+      //check valid email
+      if (!email.includes("@")) {
+        alert("Please enter a valid email address!");
+        setLoading(false);
+        return;
+      }
+      try {
+        //checking if user exists
+        const resp = await Axios.post(APP_SERVER + "/api/auth/check", {
+          email: email
+        });
+        if (!resp.data.status) {
+          alert("Please register first!");
+          setLoading(false);
+          return navigate("/register");
+        }
+        // Trigger Magic link to be sent to user
+        let didToken = await magic.auth.loginWithMagicLink({
+          email,
+        });
+
+        // Validate didToken with server
+        try {
+          const loginResp = await Axios.post(APP_SERVER + "/api/auth/login", { email }, {
+            headers: {
+              Authorization: "Bearer " + didToken
+            }
+          });
+          if (loginResp.status === 200) {
+            let userMetadata = await magic.user.getMetadata();
+            // setUser(userMetadata);
+            Cookies.set('token', didToken);
+            navigate("/app");
+          }
+
+        } catch (err) {
+          alert("Login attempt failed. Please try again later!");
+          setLoading(false);
+          console.log(err);
+        }
+
+
+      } catch (err) {
+        toast.error("Login attempt failed. Please try again later!");
+        setLoading(false);
+        console.log(err);
+      }
+    }
+  }
 
   return (
     <div className='Login'>
 
       <nav className="navbar">
         <div className="navbar-content">
-          <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
+          <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
           <div className="nav-links">
-            <div onClick={()=>navigate("/pricing")}>Pricing</div>
-            <a onClick={()=>navigate("/register")}><div className="nav-btn">Use Now</div></a>
+            <div onClick={() => navigate("/pricing")}>Pricing</div>
+            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
       </nav>
@@ -37,7 +99,6 @@ const Login = () => {
       <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200}>
         <div className="auth-con">
-          { emailId }
           <div className="auth-title">
             <p>Unleash Your Coding</p>
             <p>Powers Now!</p>
@@ -49,7 +110,7 @@ const Login = () => {
             <p className='sub-heading'>Login to your account</p>
 
             <div className="auth-inp">
-              
+
               <div className="inp-box">
                 <img src={emailIcon} alt="Email" />
                 <input
@@ -62,17 +123,17 @@ const Login = () => {
               </div>
 
             </div>
-            
-            <div className="auth-btn nav-btn" onClick={() => dispatch(login({email: email})) }>
+
+            <div className="auth-btn nav-btn" onClick={handleLogin}>
               Login
             </div>
 
-            <p className='auth-link'>New to Codz? <a onClick={()=>navigate("/register")}>Sign up</a></p>
-            
+            <p className='auth-link'>New to Codz? <a onClick={() => navigate("/register")}>Sign up</a></p>
+
           </div>
         </div>
       </Container>
-     
+
     </div>
   )
 }
