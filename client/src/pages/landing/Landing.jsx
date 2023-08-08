@@ -18,28 +18,29 @@ import dotted_circle from '../../assets/images/dotted-circle.svg'
 import codz_grid from '../../assets/images/codz-grid.svg'
 import landingHero from '../../assets/gradients/landing-hero.png'
 import landingIntro from '../../assets/gradients/landing-intro.png'
+import Footer from '../../components/footer/Footer'
 
 
 const Landing = () => {
   const navigate = useNavigate()
   return (
     <div className="Landing">
-    
+
       <nav className="navbar">
         <div className="navbar-content">
-          <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
+          <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
           <div className="nav-links">
-            <div onClick={()=>navigate("/pricing")}>Pricing</div>
-            <a onClick={()=>navigate("/register")}><div className="nav-btn">Use Now</div></a>
+            <div onClick={() => navigate("/pricing")}>Pricing</div>
+            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
       </nav>
-        <img className='hero-left' src={landingHero} alt="" />
-        <img className='hero-right' src={landingHero} alt="" />
-        <img className='hero-mid' src={landingHero} alt="" />
-        
+      <img className='hero-left' src={landingHero} alt="" />
+      <img className='hero-right' src={landingHero} alt="" />
+      <img className='hero-mid' src={landingHero} alt="" />
+
       <section className="hero">
-     
+
         <div className="hero-content">
           <div className="title">
             <h1>
@@ -70,14 +71,14 @@ const Landing = () => {
             </p>
           </div>
           <div className="intro-graphic">
-          <img className='intro-right' src={landingIntro} alt="" />
+            <img className='intro-right' src={landingIntro} alt="" />
             <img src={codz_hero} alt="codz-logo" />
           </div>
         </div>
       </section>
 
       <section className="playground">
-      <img className='playground-left' src={landingIntro} alt="" />
+        <img className='playground-left' src={landingIntro} alt="" />
         <div className="playground-content">
           <div className="playground-graphic">
             <img src={playground} alt="Coding" />
@@ -94,7 +95,7 @@ const Landing = () => {
       </section>
 
       <section className="features">
-      
+
         <div className="feature-content">
           <p className="feature-title">
             Effortless Coding, Maximum Productivity
@@ -111,7 +112,7 @@ const Landing = () => {
                 Code Optimization
               </p>
               <p className='card-sub-title'>
-              Get more out of your code with Codz's intelligent optimization algorithms, designed to boost performance and reduce bloat.
+                Get more out of your code with Codz's intelligent optimization algorithms, designed to boost performance and reduce bloat.
               </p>
             </div>
             <div className='card'>
@@ -120,7 +121,7 @@ const Landing = () => {
                 Code Generation
               </p>
               <p className='card-sub-title'>
-              From simple functions to complex algorithms, Codz's code generation feature makes it easy to generate high-quality code quickly and easily.
+                From simple functions to complex algorithms, Codz's code generation feature makes it easy to generate high-quality code quickly and easily.
               </p>
             </div>
             <div className='card'>
@@ -129,7 +130,7 @@ const Landing = () => {
                 Code Debugging
               </p>
               <p className='card-sub-title'>
-              Don't let bugs slow you down - with Codz's code debugging feature, you can quickly identify and solve issues in your code.
+                Don't let bugs slow you down - with Codz's code debugging feature, you can quickly identify and solve issues in your code.
               </p>
             </div>
             <div className='card'>
@@ -138,7 +139,7 @@ const Landing = () => {
                 Code Summarization
               </p>
               <p className='card-sub-title'>
-              Say goodbye to tedious code reviews - with Codz's code summarization feature, you can quickly understand the structure and flow of your code.
+                Say goodbye to tedious code reviews - with Codz's code summarization feature, you can quickly understand the structure and flow of your code.
               </p>
             </div>
           </div>
@@ -146,7 +147,7 @@ const Landing = () => {
       </section>
 
       <section className="join">
-      <img className='join-mid' src={landingIntro} alt="" />
+        <img className='join-mid' src={landingIntro} alt="" />
         <div className="join-content">
           <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}
@@ -162,7 +163,7 @@ const Landing = () => {
           <img src={codz_grid} alt="Grid" />
         </div>
       </footer>
-
+      <Footer />
     </div>
   )
 }
