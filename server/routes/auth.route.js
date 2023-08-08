@@ -84,9 +84,12 @@ router.post("/login", async (req, res) => {
             );
         }
         //update the magicId
-        user.magicId = issuer;
+        user.magic_id = issuer;
         await user.save();
-        return res.status(200).json({ authenticated: true });
+        //get metadata of user
+        const metadata = await magic.users.getMetadataByIssuer(issuer);
+
+        return res.status(200).json({ authenticated: true, metadata, user });
     } catch (error) {
         return res.status(500).json({
             error: error.message

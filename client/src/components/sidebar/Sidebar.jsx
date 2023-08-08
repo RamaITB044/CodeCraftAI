@@ -1,26 +1,41 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
 import { motion } from 'framer-motion'
-import logout from '../../assets/icons/logout.svg';
+import logout_icon from '../../assets/icons/logout.svg';
 import codz_logo from '../../assets/icons/app-logo.png';
 import './Sidebar.scss'
 import { sidebarRoutes } from './sidebarRoutes';
 import expand_icon from '../../assets/icons/expand.svg';
+import { magic } from '../../utils/magic'; 
+import Cookies from 'js-cookie'
+import { setUser } from '../../slices/userSlice';
+import { logout } from '../../slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux'
 
 const Sidebar = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleHover = () => {
-        setIsExpanded(true);
-    };
+    // const handleHover = () => {
+    //     setIsExpanded(true);
+    // };
 
-    const handleMouseLeave = () => {
-        setIsExpanded(false);
-    };
+    // const handleMouseLeave = () => {
+    //     setIsExpanded(false);
+    // };
 
     const handleExpand = () => {
         setIsExpanded(!isExpanded);
+    }
+
+    const logout = () => {
+        magic.user.logout().then(() => {
+            dispatch(setUser({}));
+            dispatch(logout);
+            Cookies.remove("token");
+            navigate("/");
+        });
     }
 
     return (
@@ -53,8 +68,8 @@ const Sidebar = () => {
                         </NavLink>
                     })}
                 </div>
-                <div className="route-box">
-                    <img src={logout} alt="Logout" />
+                <div className="route-box" onClick={logout}>
+                    <img src={logout_icon} alt="Logout" />
                     {isExpanded && <p className="route-name">Logout</p>}
                 </div>
             </div>

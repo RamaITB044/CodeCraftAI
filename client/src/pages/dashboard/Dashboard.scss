@@ -1,31 +1,46 @@
-.Dashboard{
+.Dashboard {
     background-color: var(--app-bg);
     width: 100%;
 
-    .welcome-box{
+    .dashboard-btn {
+        padding: 10px 20px;
+        text-align: center;
+        background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+        font-size: 14px;
+        border-radius: 5px;
+        max-width: 200px;
+
+        &:hover {
+            box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    }
+
+    .welcome-box {
         padding: 10px 0px;
 
-        h1{
+        h1 {
             color: white;
             font-weight: 600;
         }
     }
 
-    .intro-card{
+    .intro-card {
         height: 250px;
         background: linear-gradient(94.22deg, #306BFF 21.72%, #040E3A 122.76%);
         border-radius: 10px;
         position: relative;
         padding: 20px;
 
-        .title{
+        .title {
             font-weight: 500;
             font-size: 40px;
             color: white;
             line-height: 1.1em;
         }
 
-        img{
+        img {
             width: 364px;
             position: absolute;
             filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.4));
@@ -34,10 +49,91 @@
         }
     }
 
-    .card{
-        height: 200px;
+    .card {
+        min-height: 250px;
+        color: var(--text-primary);
         background-color: var(--app-primary);
         border-radius: 10px;
         padding: 20px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .title {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .plan {
+            font-size: 50px;
+            font-weight: 600;
+        }
+
+        #pro {
+            background: linear-gradient(218.88deg, #D4FFEC -34.89%, #57F2CC 20.39%, #306BFF 72.32%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+        }
+
+        #basic {
+            background: linear-gradient(79.66deg, #676767 5%, #CBCBCB 59.72%, #FFFFFF 88.3%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+    }
+
+    .codes-card {
+        min-height: 250px;
+        color: var(--text-primary);
+        background-color: var(--app-primary);
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+
+
+
+        .title {
+            font-size: 32px;
+            line-height: 1.3em;
+        }
+
+        img {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+    }
+
+    .details-card {
+
+        min-height: 200px;
+        color: var(--text-primary);
+        background-color: var(--app-primary);
+        border-radius: 10px;
+        padding: 40px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .details-con{
+            text-align: center;
+
+            .title{
+                font-size: 24px;      
+            }
+            .value{
+                font-size: 50px;
+                font-weight: 600;
+                color: var(--primary-blue);
+            }
+        }
     }
 }

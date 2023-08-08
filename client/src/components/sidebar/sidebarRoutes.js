@@ -16,7 +16,7 @@ export const sidebarRoutes = [
         icon: playground
     },
     {
-        path: '/app/my-codes',
+        path: '/app/codes',
         name: 'My Codes',
         icon: my_codes
     },

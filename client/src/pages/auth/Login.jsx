@@ -10,10 +10,13 @@ import userIcon from '../../assets/icons/user.svg'
 import loginCard from '../../assets/gradients/login-card.png'
 import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
-import { login, logout } from '../../slices/authSlice';
+import { metaData, logout } from '../../slices/authSlice';
+import { setUser } from '../../slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { magic } from '../../utils/magic';
 import Cookies from 'js-cookie'
+import toast from 'react-hot-toast';
+import Axios from 'axios'
 
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
@@ -29,12 +32,12 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
     if (email === "") {
-      alert("Please provide your email!");
+      toast.error("Please provide your email!");
       setLoading(false);
     } else {
       //check valid email
       if (!email.includes("@")) {
-        alert("Please enter a valid email address!");
+        toast.error("Please enter a valid email address!");
         setLoading(false);
         return;
       }
@@ -44,7 +47,7 @@ const Login = () => {
           email: email
         });
         if (!resp.data.status) {
-          alert("Please register first!");
+          toast.error("Please register first!");
           setLoading(false);
           return navigate("/register");
         }
@@ -61,14 +64,15 @@ const Login = () => {
             }
           });
           if (loginResp.status === 200) {
-            let userMetadata = await magic.user.getMetadata();
-            // setUser(userMetadata);
+            dispatch(metaData(loginResp.data.metaData));
+            dispatch(setUser(loginResp.data.user));
+            console.log( loginResp.data);
             Cookies.set('token', didToken);
             navigate("/app");
           }
 
         } catch (err) {
-          alert("Login attempt failed. Please try again later!");
+          toast.error("Login attempt failed. Please try again later!");
           setLoading(false);
           console.log(err);
         }

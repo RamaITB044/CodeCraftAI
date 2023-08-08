@@ -22,7 +22,7 @@
     "joi": "^17.7.1",
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
-    "openai": "^3.1.0"
+    "openai": "^3.2.1"
   },
   "devDependencies": {
     "jest": "^29.4.2",

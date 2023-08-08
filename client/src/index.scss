@@ -17,11 +17,13 @@
   ::-webkit-scrollbar {
     width: 10px;
     height: 8px;
-  
+
   }
+
   ::-webkit-scrollbar-track {
     background: var(--landing-card);
   }
+
   ::-webkit-scrollbar-thumb {
     background: var(--landing-bg);
     background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
@@ -35,6 +37,8 @@
   --text-secondary: #BFBFBF;
   --app-bg: #131517;
   --app-primary: #1E1F25;
+  --app-button:#2F3033;
+  --primary-blue : #306BFF;
 }
 
 body {
@@ -57,10 +61,12 @@ a {
 
 .nav-btn,
 .join-btn,
-.action-btn {
+.action-btn,
+.dashboard-btn {
   transition: 0.2s;
 
   &:active {
     transform: scale(0.98);
   }
+
 }

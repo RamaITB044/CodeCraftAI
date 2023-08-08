@@ -17,7 +17,7 @@ router.post("/prompt", async (req, res) => {
 router.post("/optimize", async (req, res) => {
     // const magicId = req.magicId;
     try {
-        // const user = User.find({ magicId: magicId });
+        // const user = User.find({ magic_id: magicId });
         // if (!user) {
         //     return res.status(401).json({ error: "User not found" });
         // }
@@ -49,7 +49,7 @@ router.post("/optimize", async (req, res) => {
 router.post("/debug", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magicId: magicId });
+        const user = User.find({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
@@ -81,7 +81,7 @@ router.post("/debug", authMiddleware, async (req, res) => {
 router.post("/generate", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magicId: magicId });
+        const user = User.find({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
@@ -111,7 +111,7 @@ router.post("/generate", authMiddleware, async (req, res) => {
 router.post("/summarize", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magicId: magicId });
+        const user = User.find({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
