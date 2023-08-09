@@ -35,7 +35,6 @@
 //   .nav-btn {
 //     padding: 10px 24px;
 //     background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
-//     color: 00px 0;
 //     color: var(--text-primary);
 //     border-radius: 5px;
 
@@ -62,7 +61,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .navbar-content {
@@ -74,8 +73,8 @@
   font-size: 16px;
   z-index: 4;
 
-  img{
-    cursor:pointer;
+  img {
+    cursor: pointer;
   }
 }
 
@@ -85,7 +84,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .nav-btn {
@@ -93,7 +92,7 @@
   background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
   color: var(--text-primary);
   border-radius: 5px;
-  
+
 
   &:hover {
     box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
@@ -102,7 +101,8 @@
   }
 }
 
-.Register, .Login {
+.Register,
+.Login {
   background-color: var(--landing-bg);
   width: 100%;
   min-height: 100vh;
@@ -110,9 +110,10 @@
   box-sizing: border-box;
   position: relative;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-.login-center{
+.login-center {
   position: absolute;
   z-index: 1;
   left: 50%;
@@ -120,14 +121,14 @@
   top: -100px;
 }
 
-.login-left{
+.login-left {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
 }
 
-.login-right{
+.login-right {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -142,7 +143,7 @@
   justify-content: center;
   gap: 40px;
   padding-bottom: 50px;
-  
+
 }
 
 .auth-title {
@@ -175,12 +176,12 @@
     color: #FFFFFF;
   }
 
-  .sub-heading{
+  .sub-heading {
     color: #B4B4B4;
-    font-size:16px ;
+    font-size: 16px;
   }
 
-  .auth-inp{
+  .auth-inp {
     margin-top: 50px;
     width: 100%;
   }
@@ -198,7 +199,7 @@
     border: 1px solid rgba(220, 220, 220, 0.632);
     background-color: #b4b4b40f;
   }
-  
+
   .inp-box input {
     width: 100%;
     background: none;
@@ -209,7 +210,7 @@
     font-size: 18px;
   }
 
-  .auth-btn{
+  .auth-btn {
     height: 56px;
     margin-top: 20px;
     width: 100%;
@@ -221,10 +222,10 @@
     font-size: 20px;
   }
 
-  .auth-link{
+  .auth-link {
     padding-top: 15px;
 
-    a{
+    a {
       color: #306BFF;
     }
   }

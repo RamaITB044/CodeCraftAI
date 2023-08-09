@@ -4,7 +4,7 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import "./Main.scss";
 import Axios from 'axios';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -12,24 +12,28 @@ const Main = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const getUserDataFromServer = async () => {
-        const didToken = Cookies.get("token");
-        try {
-            const resp = await Axios.get(APP_SERVER + "/api/user/data", {
-                headers: {
-                    Authorization: "Bearer " + didToken
-                }
-            });
-            dispatch(setUser(resp.data.user));
-        } catch (error) {
-            toast.error("Something went wrong!")
-            console.log(error);
-        }
-    }
+    // const getUserDataFromServer = async () => {
+    //     const didToken = Cookies.get("token");
+    //     try {
+    //         const resp = await Axios.get(APP_SERVER + "/api/user/data", {
+    //             headers: {
+    //                 Authorization: "Bearer " + didToken
+    //             }
+    //         });
+    //         dispatch(setUser(resp.data.user));
+    //     } catch (error) {
+    //         toast.error("Something went wrong!")
+    //         console.log(error);
+    //     }
+    // }
+
+    const userMetadata = useSelector((state) => state.auth?.value); 
 
     useEffect(() => {
-        console.log("Called Main compoent");
-    },[])
+      if (!userMetadata?.issuer) {
+        navigate("/login");
+      }
+    },[navigate])
 
     return (
         <div className='Main'>

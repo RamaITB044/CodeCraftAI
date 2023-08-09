@@ -2,6 +2,10 @@
   background-color: var(--app-bg);
   width: 100%;
 
+  .mantine-Card-cardSection{
+    padding-right: 4px !important;
+  }
+
   .welcome-box {
     padding: 10px 0px;
 

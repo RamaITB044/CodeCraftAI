@@ -6,8 +6,12 @@ import search_icon from '../../assets/icons/search.svg'
 import sort_icon from '../../assets/icons/sort.svg'
 import filter_icon from '../../assets/icons/filter.svg'
 import kebab_icon from '../../assets/icons/kebab.svg'
+import { useSelector } from 'react-redux';
 
 const Codes = () => {
+  
+  const userData = useSelector(state => state.user.value);
+
   return (
     <div className='Codes'>
       <Container size={1200}>
@@ -52,16 +56,14 @@ const Codes = () => {
         </SimpleGrid> */}
         <Flex
           gap={30}
-          justify="space-between"
+          justify="flex-start"
           align="center"
           direction="row"
           wrap="wrap"
         >
-          <CodeCard />
-          <CodeCard />
-          <CodeCard />
-          <CodeCard />
-          <CodeCard />
+          {userData?.codes?.length > 0? userData.codes.map((code) => {
+            return <CodeCard code={code} />
+          }): <p>You haven't saved any file yet!</p>}
         </Flex>
       </Container>
     </div>

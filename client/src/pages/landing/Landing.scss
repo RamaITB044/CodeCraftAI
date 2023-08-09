@@ -12,24 +12,25 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .hero-left{
-    position:absolute;
-    opacity:80%;
-    top:-450px;
-    left:-350px;
-    transform: rotate(45deg);
-  }
-  .hero-right{
-    position:absolute;
-    top:-450px;
-    right:-350px;
-    opacity:90%;
-  }
-  .hero-mid{
-    position:absolute;
-    top:300px;
-    right:-150px;
-    opacity:60%;
+  // .hero-left{
+  //   position:absolute;
+  //   opacity:100%;
+  //   top:-450px;
+  //   left:-350px;
+  //   transform: rotate(45deg);
+  // }
+  // .hero-right{
+  //   position:absolute;
+  //   top:-450px;
+  //   right:-350px;
+  //   opacity:90%;
+  // }
+  .hero-mid {
+    position: absolute;
+    top: -30px;
+    right: 150px;
+    opacity: 90%;
+    z-index: 1;
   }
   
 
@@ -54,16 +55,16 @@
   }
 
   .nav-links {
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 20px;
-    cursor:pointer;
+    cursor: pointer;
   }
 
   .nav-btn {
     padding: 10px 24px;
     background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
-    color: 00px 0;
     color: var(--text-primary);
     border-radius: 5px;
 
@@ -74,8 +75,10 @@
   }
 
   .hero {
+    margin-top: 100px;
     width: 100%;
     display: flex;
+    height: 100vh;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -85,81 +88,55 @@
       width: 100%;
       padding: 20px 0px;
       display: flex;
-      gap: 70px;
+      gap: 10px;
+      flex-direction: column;
       align-items: center;
+      position: relative;
+      z-index: 2;
+
+      .glass-board {
+        width: 70%;
+        position: absolute;
+        bottom: 350px;
+      }
+
+      .revolutionizing {
+        position: absolute;
+        top: -80px;
+      }
 
       .title h1 {
         color: var(--text-primary);
-        font-size: 128px;
+        font-size: 100px;
         font-weight: 700;
         line-height: 100%;
+        text-align: center;
       }
 
-      .title {
-        width: 564px;
-      }
 
       .sub-title {
+        text-align: center;
         color: var(--text-secondary);
         font-weight: 400;
-        font-size: 20px;
+        font-size: 18px;
+        max-width: 1000px;
+      }
+
+      .hero-btn {
+        margin-top: 20px;
+        padding: 15px 40px;
+        background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+        color: var(--text-primary);
+        border-radius: 5px;
+        &:hover {
+          box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+          transition: 0.3s;
+        }
       }
     }
 
   }
 
-  .hero-graphics {
-    margin-top: -80px;
-    box-sizing: border-box;
-    text-align: center;
-    overflow: hidden;
-
-.codingimg{
-  background: url("../../assets/images/coding.svg") repeat-x;
-  height: 400px;
-  width: 76800px;
-  animation: slide 500s linear infinite;
-
-  &:hover{
-    background:url("../../assets/images/coding2.svg") repeat-x;
-    transition: 0.2s;
-  }
-}
-.nextimg{
-  background: url("../../assets/images/next-gen.svg") repeat-x;
-  height: 272px;
-  width: 76800px;
-  animation: slide 500s linear infinite;
-
-  &:hover{
-    background:url("../../assets/images/next-gen2.svg") repeat-x;
-    transition: 0.2s;
-  }
-}
-@keyframes slide {
-  0% {
-    transform: translate(0);
-  }
-  100% {
-    transform: translate(-76800px);
-  }
-}
-
-
-    img {
-      width: 100%;
-    }
-
-    img:nth-child(2) {
-      margin: 0px auto;
-      width: 50%;
-      display: inline-block;
-      margin-top: -280px;
-      margin-bottom: -280px;
-      transform: rotate(180deg);
-    }
-
-  }
 
   .intro {
     width: 100%;
@@ -331,12 +308,12 @@
         padding-top: 40px;
         gap: 10px;
 
-        .card {
-          width: 250px;
+        .feature-card {
+          min-height: 350px;
+          width: 280px;
           padding: 20px;
           background-color: var(--landing-card);
           border-radius: 10px;
-          min-height: 250px;
 
 
           .card-title {
@@ -409,10 +386,8 @@
         font-size: 18px;
         text-align: center;
         width: 150px;
-        height: 30px;
         padding: 10px 30px;
         background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
-        color: 00px 0;
         color: var(--text-primary);
         border-radius: 5px;
         box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);

@@ -1,11 +1,19 @@
 .Editor-controls{
     width: 100%;
-    height: 50px;
     background-color: var(--app-bg);
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    gap:10px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    
 
     .control-btn{
-        max-width: 60px;
-        padding: 10px 20px;
+        flex-grow: 1;
+        min-width: 40px;
+        max-height: 40px;
+        padding: 10px 10px;
         background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
         color: var(--text-primary);
         border-radius: 5px;
@@ -19,4 +27,24 @@
             cursor: pointer;
         }
     }
+    .func-btn{
+        cursor: pointer;
+        background-color: #25262b;
+        padding: 6px 8px;
+        border-radius: 5px;
+    }
+    .language-con{
+       flex-grow: 1;
+       width: 200px;
+    }
+
+    .modal-inp{
+            background: #25262b;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            padding: 0 10px;
+    }
+    
+
 }

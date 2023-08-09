@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { gpt } = require("../services/gpt.service");
+const { gpt, chatGpt } = require("../services/gpt.service");
 const User = require("../models/user.model");
 const authMiddleware = require('../middlewares/authMiddleware');
 
@@ -14,18 +14,18 @@ router.post("/prompt", async (req, res) => {
     }
 });
 
-router.post("/optimize", async (req, res) => {
-    // const magicId = req.magicId;
+router.post("/optimize", authMiddleware, async (req, res) => {
+    const magicId = req.magicId;
     try {
-        // const user = User.find({ magic_id: magicId });
-        // if (!user) {
-        //     return res.status(401).json({ error: "User not found" });
-        // }
+        const user = await User.findOne({ magic_id: magicId });
+        if (!user) {
+            return res.status(401).json({ error: "User not found" });
+        }
 
-        // //check if user has more than 0 credits
-        // if (user.credits.value <= 0) {
-        //     return res.status(401).json({ error: "Not enough credits" });
-        // }
+        //check if user has more than 0 credits
+        if (user.credits.value <= 0) {
+            return res.status(401).json({ error: "Not enough credits" });
+        }
 
         let initialPrompt = `\n\nCan you optimize the code? 
         Also provide meaningful comments where necessary and put those comments inside the code. Each line should have a maximum of 15 words comment.
@@ -34,10 +34,10 @@ router.post("/optimize", async (req, res) => {
         const resp = await gpt(initialPrompt + req.body.prompt);
 
         // //deduct 1 credit from user
-        // user.credits.value -= 1;
-        // //increase total optimizations
-        // user.total_optimizations += 1;
-        // await user.save();
+        user.credits.value -= 1;
+        //increase total optimizations
+        user.total_code_optimizations += 1;
+        await user.save();
 
         return res.status(200).json({ text: resp });
     } catch (error) {
@@ -49,7 +49,7 @@ router.post("/optimize", async (req, res) => {
 router.post("/debug", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magic_id: magicId });
+        const user = await User.findOne({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
@@ -68,7 +68,7 @@ router.post("/debug", authMiddleware, async (req, res) => {
         //deduct 1 credit from user
         user.credits.value -= 1;
         //increase total optimizations
-        user.total_debugs += 1;
+        user.total_code_debuggings += 1;
         await user.save();
 
         return res.status(200).json({text: resp});
@@ -81,7 +81,7 @@ router.post("/debug", authMiddleware, async (req, res) => {
 router.post("/generate", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magic_id: magicId });
+        const user = await User.findOne({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
@@ -100,7 +100,7 @@ router.post("/generate", authMiddleware, async (req, res) => {
         //increase total optimizations
         user.total_code_generations += 1;
         await user.save();
-
+        
         return res.status(200).json({text: resp});
     }catch(error){
         console.log(error);
@@ -111,7 +111,7 @@ router.post("/generate", authMiddleware, async (req, res) => {
 router.post("/summarize", authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const user = User.find({ magic_id: magicId });
+        const user = await User.findOne({ magic_id: magicId });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
@@ -121,20 +121,41 @@ router.post("/summarize", authMiddleware, async (req, res) => {
             return res.status(401).json({ error: "Not enough credits" });
         }
 
-        let initialPrompt = `Can you summarize the code? Start by saying, Heres a summarization of your code. \n\n`;
+        let initialPrompt = `Summarize the entire code and comment it out. Each comment line should have a maximum of 20 words. \n\n`;
 
         const resp = await gpt(initialPrompt + req.body.prompt);
 
         //deduct 1 credit from user
         user.credits.value -= 1;
         //increase total optimizations
-        user.total_code_generations += 1;
+        user.total_code_summarizations += 1;
         await user.save();
 
         return res.status(200).json({text: resp});
     }catch(error){
         console.log(error);
         res.status(500).json({error});
+    }
+})
+
+router.post('/chat', authMiddleware, async (req, res) => {
+    const magicId = req.magicId;
+    try {
+        const { chats } = req.body;
+        const user = await User.findOne({ magic_id: magicId });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const resp = await chatGpt(chats);
+
+        //deduct 2 credit from user
+        user.credits.value -= 2;
+        await user.save();
+
+        return res.status(200).json({reply: resp});
+    } catch (error) {
+        
     }
 })
 

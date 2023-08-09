@@ -5,6 +5,7 @@ import ActionBar from '../../components/actionBar/ActionBar';
 import CodeEditor from '../../components/codeEditor/CodeEditor';
 import EditorControls from '../../components/editorControls/EditorControls';
 import {useSelector} from 'react-redux'
+import Chat from '../../components/chat/Chat';
 
 const Playground = () => {
     const code = useSelector(state => state.code.value);
@@ -25,11 +26,9 @@ const Playground = () => {
                     </Grid.Col>
 
                     <Grid.Col xs={3}>
-                        <div className='card'>
-                            {/* <button onClick={runCode}>
-                                Run
-                            </button> */}
-                            <EditorControls/>
+                        <div className='card' id='right-side'>
+                            <EditorControls />
+                            <Chat/>
                         </div>
                     </Grid.Col>
                 </Grid>

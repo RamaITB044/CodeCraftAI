@@ -1,0 +1,58 @@
+.Chat-con {
+    width: 100%;
+    position: sticky;
+    height: 100%;
+    background-color: #181A1F;
+    border-radius: 10px;
+    border: 1px solid #696969;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 16px;
+
+    .search-inp {
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+        flex: 1;
+        background: #25262b;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+        padding: 0 10px;
+
+        textarea {
+            max-height: 200px;
+            height: 24px;
+            overflow-y: hidden;
+        }
+    }
+
+    .control-btn{
+        width: 40px;
+        height: 40px;
+        padding: 10px 10px;
+        background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
+        color: var(--text-primary);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    }
+
+    .chat-inp{
+        width: 100%;
+        display: flex;
+        padding: 0px !important;
+        align-items: flex-end;
+
+        .mantine-d8vdqj{
+            width: 100%;
+        }
+    }
+}

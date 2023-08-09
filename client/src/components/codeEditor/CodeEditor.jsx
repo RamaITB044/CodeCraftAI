@@ -9,6 +9,7 @@ const CodeEditor = () => {
     
     const dispatch = useDispatch();
     const code = useSelector(state => state.code.value);
+    const language = useSelector(state => state.code.language);
 
     const handleEditorChange = (value) => {
         console.log(value)
@@ -27,7 +28,7 @@ const CodeEditor = () => {
                 width={'100%'}
                 value={code}
                 theme='vs-dark'
-                language='javascript'
+                language={language}
                 onChange={handleEditorChange}
             />
         </div>

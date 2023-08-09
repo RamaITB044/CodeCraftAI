@@ -5,25 +5,26 @@
   padding: 0px 10px;
   box-sizing: border-box;
   position: relative;
-  overflow-y: hidden;
+  // overflow-y: hidden;
   overflow-x: hidden;
 
-  .login-center{
+
+  .login-center {
     position: absolute;
     z-index: 1;
     left: 50%;
     transform: translate(-50%);
     top: -100px;
   }
-  
-  .login-left{
+
+  .login-left {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
   }
-  
-  .login-right{
+
+  .login-right {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -56,14 +57,12 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    cursor:pointer;
+    cursor: pointer;
 
-    img{
-      cursor:pointer;
+    img {
+      cursor: pointer;
     }
   }
-
-  
 
 
   .nav-btn {
@@ -78,15 +77,5 @@
     }
   }
 
-  .pricing-box-wrapper{
-    z-index:5;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-  }
 
 }
-      
-    
-  
-

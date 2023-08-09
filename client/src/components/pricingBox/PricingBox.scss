@@ -37,23 +37,24 @@
   }
 
     .pricing-content {
-      padding: 80px 0px 100px 0px;
+      padding: 70px 0px 100px 0px;
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       justify-content: center;
-      gap: 100px;
       color: var(--text-primary);
+      gap: 5%;
       
 
       .card {
+        margin-top: 10px;
         width: 300px;
         padding: 20px;
         background: linear-gradient(253.09deg, rgba(25, 36, 59, 0.25) -7.53%, rgba(208, 208, 208, 0.085) 97.04%);
         border-radius: 10px;
         min-height: 500px;
         border: 1px solid rgba(208, 208, 208, 0.085);
+        z-index: 2;
 
         .card-head {
           text-align: center;

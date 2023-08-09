@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     value: '',
     previousValues: [],
+    language: 'javascript'
 };
 
 const codeSlice = createSlice({
@@ -18,9 +19,12 @@ const codeSlice = createSlice({
                 state.value = state.previousValues.pop(); // restore the previous value and remove it from the previousValues array
             }
         },
+        editorLanguage: (state, action) => {
+            state.language = action.payload;
+        }
     },
 });
 
-export const { userCode, undoCode } = codeSlice.actions;
+export const { userCode, undoCode, editorLanguage } = codeSlice.actions;
 
 export default codeSlice;

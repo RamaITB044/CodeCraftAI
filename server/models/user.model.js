@@ -65,7 +65,7 @@ const userSchema = new Schema({
                 type: String,
             },
             language: {
-                type: Object,
+                type: String,
             },
             file_name: {
                 type: String,
