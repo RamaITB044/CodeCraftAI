@@ -141,13 +141,13 @@ router.post("/summarize", authMiddleware, async (req, res) => {
 router.post('/chat', authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
-        const { chats } = req.body;
+        const { code, messages } = req.body;
         const user = await User.findOne({ magic_id: magicId });
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        const resp = await chatGpt(chats);
+        const resp = await chatGpt(code, messages);
 
         //deduct 2 credit from user
         user.credits.value -= 2;

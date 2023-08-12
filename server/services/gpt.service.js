@@ -23,15 +23,22 @@ async function gpt(prompt){
     }
 }
 
-async function chatGpt(prompt) {
+async function chatGpt(code, messages) {
+    let convo = "";
+    convo += `Below is the user's code that you will be dealing with. \n${code}\n`;
+    messages.forEach((message) => {
+        convo += `${message.author}: ${message.message}\n`;
+    });
+    console.log(convo);
     try{
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `    You are the most advanced AI who knows everything about Coding.
-                         ${prompt}
+            prompt: `    You are an AI chat bot made by Codz an AI powered coding platform. Don't provide any code. Just give me the answer to the question.\n
+                         ${convo}
+                         Type your response here:\n
                    `,
             temperature: 0.5,
-            max_tokens: 1000
+            max_tokens: 2000
         });
 
         if (completion.data.choices[0].finish_reason === 'length') {

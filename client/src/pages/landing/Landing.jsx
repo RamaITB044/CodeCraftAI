@@ -16,7 +16,6 @@ import landingHero from '../../assets/gradients/landing-hero.png'
 import land_grad from '../../assets/gradients/land-grad.png'
 import landingIntro from '../../assets/gradients/landing-intro.png'
 import glass_board from '../../assets/images/glass-hero.png'
-import join_grad from '../../assets/gradients/join-grad.png'
 import revolutionizing from '../../assets/images/Revolutionizing.svg'
 import Footer from '../../components/footer/Footer'
 
@@ -79,8 +78,8 @@ const Landing = () => {
         <img className='playground-left' src={landingIntro} alt="" />
         <div className="playground-content">
           <div className="playground-graphic">
-            <img src={playground} alt="Coding" className='playground-img'/>
-            <img src={playground_chat} alt="Chat" className='chat-img'/>
+            <img src={playground} alt="Coding" />
+            <img src={playground_chat} alt="Chat" />
           </div>
           <div className="playground-desc">
             <p className="playground-title"><span id='gradient'>AI</span>-Powered Code Editor</p>
@@ -145,7 +144,7 @@ const Landing = () => {
       </section>
 
       <section className="join">
-        <img className='join-mid' src={join_grad} alt="gradient" />
+        <img className='join-mid' src={landingIntro} alt="" />
         <div className="join-content">
           <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}

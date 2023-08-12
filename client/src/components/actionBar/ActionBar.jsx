@@ -62,6 +62,13 @@ const ActionBar = () => {
                 error: (err) => `Something went wrong!`,
             },
             {
+                style: {
+                    minWidth: '250px',
+                    borderRadius: '5px',
+                    border: '1px solid #306BFF',
+                    background: '#333',
+                    color: '#BFBFBF',
+                },
                 success: {
                     duration: 5000,
                     icon: '🔥',

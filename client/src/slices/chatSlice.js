@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const chatSlice = createSlice({
     name: 'chat',
     initialState: {
-        messages: []
+        messages: [
+            { author: "bot", message: "Hi, How may I help you today?" },
+        ]
     },
     reducers: {
         addMessage(state, action) {
@@ -16,10 +18,16 @@ const chatSlice = createSlice({
                 return state.messages;
             }
             return state.messages.slice(numMessages - 5, numMessages);
+        },
+        deleteLastMessage(state) {
+            state.messages.pop();
+        },
+        clearChat(state) {
+            state.messages = [{ author: "bot", message: "Hi, How may I help you today?" },];
         }
     }
 });
 
-export const { addMessage, getLastFiveMessages } = chatSlice.actions;
+export const { addMessage, getLastFiveMessages, deleteLastMessage, clearChat } = chatSlice.actions;
 
 export default chatSlice;

@@ -3,8 +3,8 @@
   width: 100%;
   padding: 0px 10px;
   box-sizing: border-box;
-  position: relative;
-  overflow-x: hidden;
+  position:relative;
+  overflow-x:hidden;
 
   #gradient {
     background: var(--btn-primary);
@@ -12,7 +12,19 @@
     -webkit-text-fill-color: transparent;
   }
 
-
+  // .hero-left{
+  //   position:absolute;
+  //   opacity:100%;
+  //   top:-450px;
+  //   left:-350px;
+  //   transform: rotate(45deg);
+  // }
+  // .hero-right{
+  //   position:absolute;
+  //   top:-450px;
+  //   right:-350px;
+  //   opacity:90%;
+  // }
   .hero-mid {
     position: absolute;
     top: -30px;
@@ -20,7 +32,7 @@
     opacity: 90%;
     z-index: 1;
   }
-
+  
 
   .navbar {
     height: 100px;
@@ -38,8 +50,8 @@
     font-size: 16px;
   }
 
-  img {
-    cursor: pointer;
+  img{
+    cursor:pointer;
   }
 
   .nav-links {
@@ -116,7 +128,6 @@
         background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
         color: var(--text-primary);
         border-radius: 5px;
-
         &:hover {
           box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
           transition: 0.3s;
@@ -143,9 +154,9 @@
       justify-content: space-between;
     }
 
-    .intro-right {
-      position: absolute;
-      top: -560px;
+    .intro-right{
+      position:absolute;
+      top:-560px;
     }
 
     .intro-desc,
@@ -187,16 +198,15 @@
     color: var(--text-primary);
     position: relative;
 
-    .playground-left {
-      position: absolute;
-      z-index: 1;
-      top: 100px;
-      left: -150px;
-      transform: rotate(180deg);
+    .playground-left{
+      position:absolute;
+      top:100px;
+      left:-150px;
+      opacity:80%;
+      transform:rotate(180deg); 
     }
 
     .playground-content {
-      z-index: 2;
       max-width: 1200px;
       width: 100%;
       display: flex;
@@ -248,6 +258,13 @@
           color: var(--text-secondary);
         }
       }
+
+      // img {
+      //   width: 900px;
+      //   position: absolute;
+      //   top: 69;
+      //   z-index: 1;
+      // }
     }
   }
 
@@ -259,7 +276,7 @@
     padding: 100px 0px;
     color: var(--text-primary);
 
-
+    
     .feature-content {
       max-width: 1200px;
       width: 100%;
@@ -333,14 +350,14 @@
     background-size: contain;
     background-position: center;
     margin-bottom: 20px;
-    position: relative;
+    position:relative;
 
-    .join-mid {
-      position: absolute;
-      top: 10px;
-      left: 400px;
-      opacity: 80%;
-      z-index: 1;
+    .join-mid{
+      position:absolute;
+      top:10px;
+      left:510px;
+      opacity:80%;
+      transform:rotate(180deg); 
     }
 
     .join-content {
@@ -350,14 +367,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      
 
-
-      img {
+      img{
         width: 10%;
       }
 
       .join-title {
-        z-index: 2;
         font-size: 50px;
         font-weight: 600;
         text-align: center;
@@ -367,7 +383,6 @@
       }
 
       .join-btn {
-        z-index: 2;
         font-size: 18px;
         text-align: center;
         width: 150px;
@@ -396,191 +411,4 @@
       }
     }
   }
-
-}
-
-// For image 
-@media screen and (max-width: 1650px) {
-  .playground-content {
-    flex-direction: column;
-
-    .playground-graphic {
-      img:nth-child(1) {
-        margin-left: -170px !important;
-      }
-
-      img:nth-child(2) {
-        height: 340px !important;
-        position: absolute;
-        width: 100%;
-        margin-top: 10%;
-        margin-left: -60%;
-      }
-    }
-
-    .playground-desc {
-      text-align: center;
-      width: 100% !important;
-    }
-  }
-
-  .join-mid {
-    left: 300px !important;
-  }
-}
-
-/* For Tablet or Old Laptop View */
-@media only screen and (max-width: 1024px) {
-  .hero-content {
-    .title h1 {
-      font-size: 75px !important;
-    }
-
-    .revolutionizing {
-      width: 75%;
-    }
-  }
-
-  .intro {
-    padding: 0px !important;
-  }
-
-  .playground-content {
-    flex-direction: column;
-
-    .playground-graphic {
-      img:nth-child(1) {
-        margin-left: -120px !important;
-      }
-
-      img:nth-child(2) {
-        height: 340px !important;
-        position: absolute;
-        width: 100%;
-        margin-top: 10%;
-        margin-left: -60%;
-      }
-    }
-
-    .playground-desc {
-      text-align: center;
-      width: 100% !important;
-    }
-  }
-  .join-mid {
-    left: 0px !important;
-  }
-}
-
-/* For Mobile Portrait View */
-@media only screen and (max-width: 768px) {
-  .hero-content {
-    .title h1 {
-      font-size: 50px !important;
-    }
-
-    .revolutionizing {
-      width: 85%;
-      top: -45px !important;
-    }
-  }
-
-  .playground-content {
-    .playground-graphic {
-      img:nth-child(1) {
-        margin-left: -90px !important;
-      }
-      img:nth-child(2) {
-        height: 220px !important;
-        position: absolute;
-        width: 100%;
-        margin-top: 10%;
-        margin-left: -60%;
-      }
-    }
-  }
-
-  .join-mid {
-    left: -200px !important;
-  }
-}
-
-
-
-
-
-/* For Mobile Phones Portrait or Landscape View */
-@media screen and (max-width: 480px) {
-  .hero {
-    margin-top: 0px !important;
-  }
-
-  .hero-content {
-    .title h1 {
-      font-size: 40px !important;
-    }
-
-    .revolutionizing {
-      width: 85%;
-      top: -45px !important;
-    }
-
-    .glass-board {
-      top: -150px !important;
-    }
-  }
-
-
-  .intro {
-    text-align: center;
-    padding: 0px !important;
-    margin-top: -80px;
-
-    .intro-content {
-      flex-direction: column-reverse;
-
-      .intro-graphic img {
-        max-width: 40% !important;
-        margin-bottom: 50px;
-      }
-
-      .intro-desc {
-        max-width: 100%;
-      }
-
-      .intro-title {
-        font-size: 40px !important;
-      }
-
-      .intro-right {
-        display: none !important;
-
-      }
-    }
-  }
-
-  .playground-content {
-
-    .playground-graphic {
-      img:nth-child(1) {
-        margin-left: -60px !important;
-      }
-
-      img:nth-child(2) {
-        height: 150px !important;
-        position: absolute;
-        width: 100%;
-        margin-top: 10%;
-        margin-left: -60%;
-      }
-    }
-  }
-
-  .playground-title, .feature-title, .join-title{
-    font-size: 40px !important;
-  }
-  .intro-sub-title,.playground-sub-title, .feature-sub-title, .join-sub-title{
-    font-size: 18px !important;
-  }
-
 }

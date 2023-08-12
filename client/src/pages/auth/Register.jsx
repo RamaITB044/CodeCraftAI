@@ -12,7 +12,6 @@ import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
 import Axios from 'axios'
 import { useSelector } from 'react-redux';
-import Footer from '../../components/footer/Footer';
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Register = () => {
@@ -22,61 +21,61 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const userMetadata = useSelector((state) => state.auth.value);
+  const userMetadata = useSelector((state) => state.auth.value); 
 
   useEffect(() => {
     if (userMetadata.issuer) {
       navigate("/app");
     }
-  }, [])
+  },[])
 
   const handleRegistration = async () => {
     setLoading(true);
     if (email === "" || name === "" || profession === "") {
-      alert("Please fill all the fields!");
-      setLoading(false);
+        alert("Please fill all the fields!");
+        setLoading(false);
     } else {
-      //check valid email
-      if (!email.includes("@")) {
-        alert("Please enter a valid email !");
-        setLoading(false);
-        return;
-      }
-      try {
-        //checking if user exists
-        const check = await Axios.post(APP_SERVER + "/api/auth/check", {
-          email: email
-        });
-        if (check.data.status) {
-          setLoading(false);
-          return toast.error("User already exists");
+        //check valid email
+        if (!email.includes("@")) {
+            alert("Please enter a valid email !");
+            setLoading(false);
+            return;
         }
-        const resp = await Axios.post(APP_SERVER + "/api/auth/register", {
-          email,
-          userName: name,
-          profession
-        });
-        if (resp.status === 201) {
-          alert("Registration Successful");
-          setLoading(false);
-          navigate("/login");
+        try {
+            //checking if user exists
+            const check = await Axios.post(APP_SERVER + "/api/auth/check", {
+                email: email
+            });
+            if (check.data.status) {
+                setLoading(false);
+                return toast.error("User already exists");
+            }
+            const resp = await Axios.post(APP_SERVER + "/api/auth/register", {
+                email,
+                userName: name,
+                profession
+            });
+            if (resp.status === 201) {
+                alert("Registration Successful");
+                setLoading(false);
+                navigate("/login");
+            }
+        } catch (err) {
+            alert("Something went wrong!");
+            setLoading(false);
+            console.log(err);
         }
-      } catch (err) {
-        alert("Something went wrong!");
-        setLoading(false);
-        console.log(err);
-      }
     }
-  }
+}
 
   return (
     <div className='Register'>
-      <nav className="navbar">
+     <nav className="navbar">
         <div className="navbar-content">
-          <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
+          <img onClick={()=>navigate("/")} src={fullLogo} alt="logo"/>
           <div className="nav-links">
-            <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
+            <div onClick={()=>navigate("/pricing")}>Pricing</div>
+            <a onClick={()=>navigate("/register")}><div className="nav-btn">Use Now</div></a>
           </div>
         </div>
       </nav>
@@ -131,13 +130,12 @@ const Register = () => {
             </div>
 
             <div className="auth-btn nav-btn" onClick={handleRegistration}>
-              Register
+                  Register
             </div>
 
-            <p className='auth-link'>Already have an account? <a onClick={() => navigate("/login")}>Login</a></p>
+            <p className='auth-link'>Already have an account? <a onClick={()=>navigate("/login")}>Login</a></p>
           </div>
         </div>
-        <Footer />
       </Container>
 
     </div>

@@ -17,7 +17,7 @@ import { magic } from '../../utils/magic';
 import Cookies from 'js-cookie'
 import toast from 'react-hot-toast';
 import Axios from 'axios'
-import Footer from '../../components/footer/Footer';
+
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -28,13 +28,13 @@ const Login = () => {
 
   const dispatch = useDispatch();
   // const emailId = useSelector((state)=>state.auth.value.email)
-  const userMetadata = useSelector((state) => state.auth.value);
+  const userMetadata = useSelector((state) => state.auth.value); 
 
   useEffect(() => {
     if (userMetadata.issuer) {
       navigate("/app");
     }
-  }, [userMetadata.issuer])
+  },[userMetadata.issuer])
 
   const handleLogin = async () => {
     setLoading(true);
@@ -73,7 +73,7 @@ const Login = () => {
           if (loginResp.status === 200) {
             dispatch(metaData(loginResp.data.metaData));
             dispatch(setUser(loginResp.data.user));
-            console.log(loginResp.data);
+            console.log( loginResp.data);
             Cookies.set('token', didToken);
             navigate("/app");
           }
@@ -143,12 +143,6 @@ const Login = () => {
 
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Footer />
       </Container>
 
     </div>
