@@ -13,7 +13,21 @@ function App() {
 
   return (
     <div className="App">
-      <Toaster />
+      <Toaster toastOptions={{
+        style: {
+          minWidth: '250px',
+          borderRadius: '5px',
+          border: '1px solid #306BFF',
+          background: '#333',
+          color: '#BFBFBF',
+        },
+        success: {
+          iconTheme: {
+            primary: 'white',
+            secondary: 'black',
+          },
+        },
+      }} />
       <Provider store={store}>
         <Router>
           <MantineProvider theme={{ colorScheme: 'dark', fontFamily: 'Lexend, sans-serif' }} withGlobalStyles withNormalizeCSS>

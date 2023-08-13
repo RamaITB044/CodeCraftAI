@@ -93,4 +93,16 @@ router.patch('/patchCode', authMiddleware, async (req, res) => {
     }
 });
 
+router.patch('/subscribe', authMiddleware, async (req, res) => {
+    const magicId = req.magicId;
+    try {
+        const user = await User.findOne({ magic_id: magicId });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        
+    }
+})
+
 module.exports = router;

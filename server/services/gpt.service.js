@@ -1,4 +1,7 @@
-const { Configuration, OpenAIApi } = require("openai");
+const {
+    Configuration,
+    OpenAIApi
+} = require("openai");
 require('dotenv').config();
 
 const configuration = new Configuration({
@@ -7,17 +10,17 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-async function gpt(prompt){
-    try{
+async function gpt(prompt) {
+    try {
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: prompt+"Code: ",
+            prompt: prompt + "Code: ",
             temperature: 0.5,
             max_tokens: 2000,
         });
         console.log(completion.data);
         return completion.data.choices[0].text;
-    }catch(error){
+    } catch (error) {
         console.log(error);
         return error;
     }
@@ -29,13 +32,12 @@ async function chatGpt(code, messages) {
     messages.forEach((message) => {
         convo += `${message.author}: ${message.message}\n`;
     });
-    console.log(convo);
-    try{
+    try {
         const completion = await openai.createCompletion({
-            model: "text-davinci-003",
+            model: "gpt-3.5-turbo",
             prompt: `    You are an AI chat bot made by Codz an AI powered coding platform. Don't provide any code. Just give me the answer to the question.\n
-                         ${convo}
-                         Type your response here:\n
+                         ${convo}\n\n
+                         If the above convo contains anything unrelated to coding, just say "Sorry, you can't ask me anything unrelated to coding!", now type your response here and dont start with "bot: ":\n
                    `,
             temperature: 0.5,
             max_tokens: 2000
@@ -43,13 +45,16 @@ async function chatGpt(code, messages) {
 
         if (completion.data.choices[0].finish_reason === 'length') {
             return completion.data.choices[0].text + '...*it costs a lot for me to speak more than this.*'
-          } else {
+        } else {
             return completion.data.choices[0].text;
         }
-    }catch(error){
+    } catch (error) {
         console.log(error);
         return error;
     }
 }
 
-module.exports = {gpt, chatGpt};
+module.exports = {
+    gpt,
+    chatGpt
+};
