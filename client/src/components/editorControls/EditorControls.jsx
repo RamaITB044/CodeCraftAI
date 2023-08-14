@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDisclosure } from '@mantine/hooks';
 import './EditorControls.scss'
-import { Modal, Select, Skeleton, Container, TextInput , Button ,Flex} from '@mantine/core';
+import { Modal, Select, Skeleton, Container, TextInput, Button, Flex, Drawer, Textarea } from '@mantine/core';
 import { languageOptions } from '../../utils/languages';
-import { extensions } from '../../utils/languageExtensions'; 
+import { extensions } from '../../utils/languageExtensions';
 import save_logo from '../../assets/icons/save.svg'
 import copy_logo from '../../assets/icons/copy.svg'
 import run_logo from '../../assets/icons/run.svg'
@@ -21,6 +21,8 @@ const EditorControls = () => {
   const dispatch = useDispatch();
   const [fileName, setFileName] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
+  const [drawerOpened, handlers] = useDisclosure(false);
+
 
   const code = useSelector(state => state.code.value);
   const language = useSelector(state => state.code.language);
@@ -35,7 +37,7 @@ const EditorControls = () => {
       code_id: code_id,
       code: code,
       language: language,
-      file_name: fileName+extensions[language],
+      file_name: fileName + extensions[language],
       last_edited: new Date().toISOString(),
       created_at: new Date().toISOString(),
     }
@@ -67,12 +69,36 @@ const EditorControls = () => {
 
         {/* <input type="text" onChange={(e)=>setFileName(e.target.value)} placeholder='Enter file name'/> */}
         {/* <button onClick={handleCreateFile}>Save</button> */}
-        <TextInput onChange={(e)=>setFileName(e.target.value)} placeholder="Enter file name" data-autofocus/>
+        <TextInput onChange={(e) => setFileName(e.target.value)} placeholder="Enter file name" data-autofocus />
         <br />
-        <Button onClick={handleCreateFile} >Save</Button>
+        <Button onClick={handleCreateFile} style={{ background: 'linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%)' }}>Save</Button>
       </Modal>
 
-      <div className='control-btn'>
+      <Drawer opened={drawerOpened} onClose={() => handlers.close()} position="right" size="24%">
+        
+        <Container>
+
+          <Textarea
+            data-autofocus
+            pb={40}
+            minRows={15}
+            maxRows={15}
+            label="Input"
+          />
+
+          <Textarea
+            disabled
+            pb={20}
+            minRows={15}
+            maxRows={15}
+            label="Output"
+          />
+          <Button onClick={handleCreateFile} style={{ background: 'linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%)' }}>Run</Button>
+        </Container>
+
+      </Drawer>
+
+      <div className='control-btn' onClick={() => handlers.open()}>
         <img src={run_logo} alt="run" />
         <p></p>
       </div>
@@ -83,7 +109,7 @@ const EditorControls = () => {
         <img src={copy_logo} alt="copy" />
       </div>
       <Select
-      className='language-con'
+        className='language-con'
         defaultValue={languageOptions[0].value}
         onChange={(lang) => dispatch(editorLanguage(lang))}
         transition="scale-y"

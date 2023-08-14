@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Codes.scss"
 import { Select, Skeleton, Container, SimpleGrid, Flex } from '@mantine/core';
 import CodeCard from '../../components/codeCard/codeCard'
@@ -7,13 +7,48 @@ import sort_icon from '../../assets/icons/sort.svg'
 import filter_icon from '../../assets/icons/filter.svg'
 import kebab_icon from '../../assets/icons/kebab.svg'
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 const Codes = () => {
-  
+
   const userData = useSelector(state => state.user.value);
+  const [sortOption, setSortOption] = useState('Newest First');
+  const [sortedCodes, setSortedCodes] = useState([]);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    if (userData?.codes) {
+      const sorted = userData.codes.slice().sort((a, b) => {
+        if (sortOption === 'Newest First') {
+          return new Date(b.created_at) - new Date(a.created_at);
+        } else {
+          return new Date(a.created_at) - new Date(b.created_at);
+        }
+      });
+      setSortedCodes(sorted);
+    }
+  }, [userData, sortOption]);
+
+  useEffect(() => {
+    if (search) {
+      const sortedArr = userData?.codes?.filter(code => code.file_name.toLowerCase().includes(search.toLowerCase()))
+      setSortedCodes(sortedArr);
+    } else {
+      setSortedCodes(userData?.codes);
+    }
+  }, [search])
+
+  const handleSortOptionChange = (value) => {
+    setSortOption(value);
+  }
 
   return (
-    <div className='Codes'>
+    <motion.div
+      className="Codes"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+    >
       <Container size={1200}>
         <div className="welcome-box">
           <h1>My Codes</h1>
@@ -25,6 +60,8 @@ const Codes = () => {
             <input
               type="text"
               placeholder="Search"
+              value={search}
+              onChange={(e) => { setSearch(e.target.value) }}
             />
           </div>
           <Select
@@ -44,16 +81,12 @@ const Codes = () => {
                 },
               },
             })}
+            onChange={handleSortOptionChange}
+            value={sortOption}
           />
         </div>
         <br />
         <br />
-        {/* <SimpleGrid cols={4}>
-          <CodeCard />
-          <CodeCard />
-          <CodeCard />
-          <CodeCard />
-        </SimpleGrid> */}
         <Flex
           gap={30}
           justify="flex-start"
@@ -61,12 +94,12 @@ const Codes = () => {
           direction="row"
           wrap="wrap"
         >
-          {userData?.codes?.length > 0? userData.codes.map((code) => {
-            return <CodeCard code={code} />
-          }): <p>You haven't saved any file yet!</p>}
+          {sortedCodes?.length > 0 ? (
+            sortedCodes.map(code => <CodeCard code={code} />)
+          ) : <p>You haven't saved any file yet!</p>}
         </Flex>
       </Container>
-    </div>
+    </motion.div>
   )
 }
 

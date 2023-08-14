@@ -12,7 +12,10 @@ import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
 import Axios from 'axios'
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 import Footer from '../../components/footer/Footer';
+import rolling_logo from '../../assets/images/rolling.svg'
+
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Register = () => {
@@ -25,10 +28,10 @@ const Register = () => {
   const userMetadata = useSelector((state) => state.auth.value);
 
   useEffect(() => {
-    if (userMetadata.issuer) {
+    if (userMetadata?.issuer) {
       navigate("/app");
     }
-  }, [])
+  }, [userMetadata?.issuer])
 
   const handleRegistration = async () => {
     setLoading(true);
@@ -70,7 +73,11 @@ const Register = () => {
   }
 
   return (
-    <div className='Register'>
+    <motion.div
+    className="Register"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.2 }}>
       <nav className="navbar">
         <div className="navbar-content">
           <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
@@ -130,9 +137,10 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="auth-btn nav-btn" onClick={handleRegistration}>
-              Register
-            </div>
+            {loading ? <img src={rolling_logo} alt="Loading..." className='rolling'/> :
+              <div className="auth-btn nav-btn" onClick={handleRegistration}>
+                Register
+              </div>}
 
             <p className='auth-link'>Already have an account? <a onClick={() => navigate("/login")}>Login</a></p>
           </div>
@@ -140,7 +148,7 @@ const Register = () => {
         <Footer />
       </Container>
 
-    </div>
+    </motion.div>
   )
 }
 

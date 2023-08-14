@@ -14,10 +14,12 @@ import { metaData, logout } from '../../slices/authSlice';
 import { setUser } from '../../slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { magic } from '../../utils/magic';
+import { motion } from 'framer-motion';
 import Cookies from 'js-cookie'
 import toast from 'react-hot-toast';
 import Axios from 'axios'
 import Footer from '../../components/footer/Footer';
+import rolling_logo from '../../assets/images/rolling.svg'
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -71,10 +73,10 @@ const Login = () => {
             }
           });
           if (loginResp.status === 200) {
-            dispatch(metaData(loginResp.data.metaData));
-            dispatch(setUser(loginResp.data.user));
-            console.log(loginResp.data);
+            dispatch(setUser(await loginResp.data.user));
+            dispatch(metaData(await loginResp.data.metadata));
             Cookies.set('token', didToken);
+            setLoading(false);
             navigate("/app");
           }
 
@@ -94,7 +96,11 @@ const Login = () => {
   }
 
   return (
-    <div className='Login'>
+    <motion.div
+    className="Login"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.2 }}>
 
       <nav className="navbar">
         <div className="navbar-content">
@@ -135,9 +141,10 @@ const Login = () => {
 
             </div>
 
-            <div className="auth-btn nav-btn" onClick={handleLogin}>
-              Login
-            </div>
+            {loading ? <img src={rolling_logo} alt='Loading...' className='rolling'/> :
+              <div className="auth-btn nav-btn" onClick={handleLogin}>
+                Login
+              </div>}
 
             <p className='auth-link'>New to Codz? <a onClick={() => navigate("/register")}>Sign up</a></p>
 
@@ -151,7 +158,7 @@ const Login = () => {
         <Footer />
       </Container>
 
-    </div>
+    </motion.div>
   )
 }
 
