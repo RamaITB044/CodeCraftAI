@@ -34,7 +34,7 @@ async function chatGpt(code, messages) {
     });
     try {
         const completion = await openai.createCompletion({
-            model: "gpt-3.5-turbo",
+            model: "text-davinci-003",
             prompt: `    You are an AI chat bot made by Codz an AI powered coding platform. Don't provide any code. Just give me the answer to the question.\n
                          ${convo}\n\n
                          If the above convo contains anything unrelated to coding, just say "Sorry, you can't ask me anything unrelated to coding!", now type your response here and dont start with "bot: ":\n

@@ -89,6 +89,9 @@ const userSchema = new Schema({
         price: {
             type: Number,
         },
+        payment_signature: {
+            type: String,
+        },
         start_date: {
             type: Date,
         },

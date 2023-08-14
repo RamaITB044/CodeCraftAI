@@ -7,13 +7,18 @@ import PricingBox from '../../components/pricingBox/PricingBox'
 import loginCard from '../../assets/gradients/login-card.png'
 import loginLeft from '../../assets/gradients/login-left.png'
 import loginRight from '../../assets/gradients/login-right.png'
-import { Container} from '@mantine/core';
+import { Container } from '@mantine/core';
+import { motion } from 'framer-motion'
 
 const Pricing = () => {
   const navigate = useNavigate();
   return (
-    <div className='Pricing'>
-
+    <motion.div
+      className="Pricing"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+    >
       <nav className="navbar">
         <div className="navbar-content">
           <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
@@ -28,9 +33,10 @@ const Pricing = () => {
       <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200} className='pricing-con'>
         <PricingBox />
-      <Footer/>
+        
       </Container>
-    </div>
+      <Footer />
+    </motion.div>
   )
 }
 

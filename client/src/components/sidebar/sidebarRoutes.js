@@ -22,7 +22,7 @@ export const sidebarRoutes = [
     },
     {
         path: '/app/pricing',
-        name: 'Credits',
+        name: 'Pricing',
         icon: credit_store
     },
 ]

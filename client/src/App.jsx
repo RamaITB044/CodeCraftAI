@@ -27,7 +27,7 @@ function App() {
             secondary: 'black',
           },
         },
-      }} />
+      }} containerClassName="toaster-wrapper"/>
       <Provider store={store}>
         <Router>
           <MantineProvider theme={{ colorScheme: 'dark', fontFamily: 'Lexend, sans-serif' }} withGlobalStyles withNormalizeCSS>

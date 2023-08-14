@@ -93,15 +93,41 @@ router.patch('/patchCode', authMiddleware, async (req, res) => {
     }
 });
 
-router.patch('/subscribe', authMiddleware, async (req, res) => {
+router.get('/checkSubscription', authMiddleware, async (req, res) => {
     const magicId = req.magicId;
     try {
         const user = await User.findOne({ magic_id: magicId });
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
+        if (user.plan.plan_name === "Basic") {
+            return res.status(200).json({ status: false });
+        } else {
+            return res.status(200).json({ status: true });
+        }
     } catch (error) {
-        
+        return res.status(500).json({ error: error.message });
+    }
+});
+
+router.patch('/subscribe', authMiddleware, async (req, res) => {
+    const magicId = req.magicId;
+    try {
+        const { payment_signature } = req.body;
+        const user = await User.findOne({ magic_id: magicId });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        user.credits.value = 1000;
+        user.plan.plan_name = "Pro";
+        user.plan.price = 10.00;
+        user.plan.payment_signature = payment_signature;
+        user.plan.start_date = new Date().toISOString();
+        user.plan.end_date = new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString();
+        await user.save();
+        return res.status(200).json({ plan: user.plan, message: 'Subscription successful' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Subscription Failed! Please try again later.', error: error.message });
     }
 })
 

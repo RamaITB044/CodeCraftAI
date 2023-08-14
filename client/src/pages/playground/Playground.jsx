@@ -6,6 +6,7 @@ import CodeEditor from '../../components/codeEditor/CodeEditor';
 import EditorControls from '../../components/editorControls/EditorControls';
 import {useSelector} from 'react-redux'
 import Chat from '../../components/chat/Chat';
+import { motion } from 'framer-motion';
 
 const Playground = () => {
     const code = useSelector(state => state.code.value);
@@ -15,7 +16,12 @@ const Playground = () => {
 
 
     return (
-        <div className='Playground'>
+        <motion.div
+        className="Playground"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2 }}
+      >
             <Container fluid="true">
                 <Grid>
                     <Grid.Col xs={9}>
@@ -33,7 +39,7 @@ const Playground = () => {
                     </Grid.Col>
                 </Grid>
             </Container>
-        </div>
+        </motion.div>
     )
 }
 

@@ -5,6 +5,7 @@ import { Grid, Skeleton, Container } from '@mantine/core';
 import codz_avatar from '../../assets/images/codz-avatar.png'
 import code_group from '../../assets/images/code-group.png'
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const child = <Skeleton height={200} radius="md" animate={true} />;
 
@@ -14,7 +15,12 @@ const Dashboard = () => {
   const userData = useSelector(state => state.user.value);
 
   return (
-    <div className='Dashboard'>
+    <motion.div
+    className="Dashboard"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.2 }}
+  >
       <Container size={1200}>
         <div className="welcome-box">
           <h1>Welcome {userData?.userName}</h1>
@@ -38,9 +44,9 @@ const Dashboard = () => {
             <div className='card'>
               <p className='title'>Credits Left</p>
               <p className='plan'>{userData?.credits?.value}</p>
-              <div className="dashboard-btn">
+              {/* <div className="dashboard-btn">
                 Buy More
-              </div>
+              </div> */}
             </div>
           </Grid.Col>
           <Grid.Col xs={3}>
@@ -95,7 +101,7 @@ const Dashboard = () => {
           </Grid.Col>
         </Grid>
       </Container>
-    </div>
+    </motion.div>
   )
 }
 

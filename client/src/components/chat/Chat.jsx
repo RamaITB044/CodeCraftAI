@@ -75,13 +75,13 @@ const Chat = () => {
     return (
         <Container className='Chat-con'>
             <Container className="chat-box">
-                {messages.length > 0 ? messages.map((val) => {
+                {messages.length > 0 ? messages.map((val, idx) => {
                     if (val.author === "bot") {
-                        return <div className='bot'>
+                        return <div className='bot' key={idx}>
                             <p>{val.message}</p>
                         </div>
                     } else {
-                        return <div className='user'>
+                        return <div className='user' key={idx}>
                             <p>{val.message}</p>
                         </div>
                     }
@@ -92,6 +92,7 @@ const Chat = () => {
                     <img src={broom_logo} alt="Clear chat" />
                 </div>
                 <Textarea
+                    maxRows={4}
                     placeholder="Ask your query"
                     autosize
                     minRows={1}

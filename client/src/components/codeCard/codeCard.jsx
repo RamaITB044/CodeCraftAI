@@ -42,11 +42,11 @@ const codeCard = ({ code }) => {
 
   return (
     <div>
-      <Card shadow="sm" radius="md">
-        <Card.Section inheritPadding py="xs" miw={250}>
-          <Group position="apart">
+      <Card shadow="sm" radius="md" withBorder miw={265}>
+        <Card.Section inheritPadding py="xs" miw={250} withBorder>
+          <Group position="apart" withBorder>
             <Text weight={500}></Text>
-            <Menu withinPortal position="bottom-end" shadow="sm">
+            <Menu withinPortal position="bottom-end" shadow="sm"> 
               <Menu.Target>
                 <ActionIcon>
                   <img src={kebab} alt="" />
@@ -63,11 +63,11 @@ const codeCard = ({ code }) => {
 
         <div onClick={handleCardClick} className='card-below'>
 
-          <Center mt="sm">
+          <Center mt="sm" withBorder>
             <Image src={`https://img.icons8.com/ios/64/306BFF/${code?.language}.png`} width={200} height={80} fit="contain" withPlaceholder />
           </Center>
 
-          <Text mt="sm" color="#306BFF" size="m">
+          <Text mt="sm" color="#306BFF" size="xl" weight={500}>
             {code?.file_name}
           </Text>
 

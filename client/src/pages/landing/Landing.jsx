@@ -19,13 +19,18 @@ import glass_board from '../../assets/images/glass-hero.png'
 import join_grad from '../../assets/gradients/join-grad.png'
 import revolutionizing from '../../assets/images/Revolutionizing.svg'
 import Footer from '../../components/footer/Footer'
+import { motion } from "framer-motion";
 
 
 const Landing = () => {
   const navigate = useNavigate()
   return (
-    <div className="Landing">
-
+    <motion.div
+      className="Landing"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+    >
       <nav className="navbar">
         <div className="navbar-content">
           <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
@@ -162,7 +167,7 @@ const Landing = () => {
         </div>
       </footer>
       <Footer />
-    </div>
+    </motion.div>
   )
 }
 

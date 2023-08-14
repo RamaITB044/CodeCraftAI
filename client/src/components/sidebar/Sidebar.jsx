@@ -29,10 +29,10 @@ const Sidebar = () => {
         setIsExpanded(!isExpanded);
     }
 
-    const logout = () => {
+    const handleLogout = () => {
         magic.user.logout().then(() => {
             dispatch(setUser({}));
-            dispatch(logout);
+            dispatch(logout());
             Cookies.remove("token");
             navigate("/");
         });
@@ -68,7 +68,7 @@ const Sidebar = () => {
                         </NavLink>
                     })}
                 </div>
-                <div className="route-box" onClick={logout}>
+                <div className="route-box" onClick={handleLogout}>
                     <img src={logout_icon} alt="Logout" />
                     {isExpanded && <p className="route-name">Logout</p>}
                 </div>

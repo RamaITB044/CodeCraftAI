@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import './Checkout.scss'
 import { useNavigate } from "react-router-dom"
 import { createQR, encodeURL, findReference, validateTransfer, FindReferenceError, ValidateTransferError } from "@solana/pay";
 import { clusterApiUrl, Connection, Keypair } from "@solana/web3.js";
@@ -6,10 +7,18 @@ import { shopAddress, usdcAddress } from "../../utils/addresses";
 import { calculateAmount } from '../../utils/calculateAmount';
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
+import Axios from 'axios';
+import { useDispatch } from "react-redux"
+import { setPlan } from '../../slices/userSlice';
+import rolling_logo from '../../assets/images/rolling.svg'
 
-const Checkout = ({ price }) => {
-    const [confirmed, setConfirmed] = useState(false);
+const APP_SERVER = import.meta.env.VITE_APP_SERVER;
+
+const Checkout = ({ price, setShowPricing, setShowConfirmation }) => {
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // Unique address that we can listen for payments to
     const reference = useMemo(() => Keypair.generate().publicKey, []);
     const amount = calculateAmount(price);
@@ -64,10 +73,30 @@ const Checkout = ({ price }) => {
                 //     },
                 //     { commitment: 'confirmed' }
                 // )
+                if (signatureInfo.confirmationStatus === 'processed' || signatureInfo.confirmationStatus === 'confirmed') {
+                    setLoading(true);
+                }
                 if (signatureInfo.confirmationStatus === 'finalized') {
-                    setConfirmed(true)
-                    toast.success('Payment confirmed!');
-                    navigate('/');
+                    try {
+                        const resp = await Axios.patch(APP_SERVER + "/api/user/subscribe", {
+                            payment_signature: signatureInfo.signature,
+                        }, {
+                            headers: {
+                                Authorization: "Bearer " + Cookies.get('token')
+                            }
+                        });
+                        if (resp.status === 200) {
+                            setLoading(false);
+                            dispatch(setPlan(resp.data.plan));
+                            toast.success('Payment processed successfully!');
+                            setShowConfirmation(true);
+                            return;
+                        }
+                    } catch (error) {
+                        setLoading(false);
+                        console.log(error);
+                        toast.error('Payment failed!');
+                    }
                 }
             } catch (e) {
                 if (e instanceof FindReferenceError) {
@@ -88,9 +117,14 @@ const Checkout = ({ price }) => {
     }, [amount])
 
     return (
-        <div>
-            <h1>Checkout</h1>
-            <div ref={qrRef} />
+        <div className='qr-con'>
+            {loading ? <img src={rolling_logo} alt="rolling" className="rolling-logo" /> :
+                <>
+                    <div ref={qrRef} />
+                    <div className="card-btn" onClick={() => setShowPricing(true)}>
+                        Cancel
+                    </div>
+                </>}
         </div>
     )
 }

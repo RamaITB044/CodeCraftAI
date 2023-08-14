@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value:{}
+    value: {},
+    globalLoading: true,
 }
 const authSlice = createSlice({
     name: 'auth',
@@ -13,9 +14,12 @@ const authSlice = createSlice({
         logout: (state) => {
             state.value = initialState;
         },
+        setGlobalLoading: (state, action) => {
+            state.globalLoading = action.payload;
+        }
     },
 });
 
-export const { metaData, logout } = authSlice.actions;
+export const { metaData, logout, setGlobalLoading } = authSlice.actions;
 
 export default authSlice;

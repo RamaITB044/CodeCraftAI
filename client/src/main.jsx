@@ -5,42 +5,32 @@ import "./Main.scss";
 import Axios from 'axios';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Overlay, Image, AspectRatio } from '@mantine/core';
+import { magic } from '../../utils/magic';
+
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Main = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    // const getUserDataFromServer = async () => {
-    //     const didToken = Cookies.get("token");
-    //     try {
-    //         const resp = await Axios.get(APP_SERVER + "/api/user/data", {
-    //             headers: {
-    //                 Authorization: "Bearer " + didToken
-    //             }
-    //         });
-    //         dispatch(setUser(resp.data.user));
-    //     } catch (error) {
-    //         toast.error("Something went wrong!")
-    //         console.log(error);
-    //     }
-    // }
+  const userMetadata = useSelector((state) => state.auth.value);
+ 
+  useEffect(() => {
+    if (!userMetadata?.issuer) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
-    const userMetadata = useSelector((state) => state.auth?.value); 
-
-    useEffect(() => {
-      if (!userMetadata?.issuer) {
-        navigate("/login");
-      }
-    },[navigate])
-
-    return (
-        <div className='Main'>
-            <Sidebar />
-            <Outlet />
-        </div>
-    )
+ 
+  return (
+    <div className='Main'>
+      {/* {globalLoading && <Overlay color="#000" opacity={0.85} />} */}
+      <Sidebar />
+      <Outlet />
+    </div>
+  )
 }
 
 export default Main
