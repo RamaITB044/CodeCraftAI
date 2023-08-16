@@ -20,7 +20,7 @@ const userSlice = createSlice({
                 state.value.total_code_debuggings += 1;
             } else if (operation === "summarize") {
                 state.value.total_code_summarizations += 1;
-            } else {
+            }else {
                 state.value.total_code_generations += 1;
             }
         },

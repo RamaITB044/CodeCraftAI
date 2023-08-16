@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
+import { updateCredits } from '../../slices/userSlice'
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -20,6 +21,8 @@ const Chat = () => {
     const [userMessage, setUserMessage] = useState("");
     const [lastFiveMessages, setLastFiveMessages] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    const creditsLeft = useSelector(state => state.user?.value?.credits?.value)-2;
 
     // useState(() => {
     //     console.log(messages);
@@ -56,6 +59,8 @@ const Chat = () => {
                     Authorization: "Bearer " + Cookies.get('token')
                 }
             });
+            let operation = "chat";
+            dispatch(updateCredits({creditsLeft, operation}));
             dispatch(addMessage({ author: "bot", message: await resp.data.reply }));
             setLoading(false);
             // dispatch(updateCredits({creditsLeft, operation}));

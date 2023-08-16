@@ -72,8 +72,8 @@ const codeCard = ({ code }) => {
           </Text>
 
           <Card.Section inheritPadding mt="sm" pb="md">
-            <Text fz="xs" weight={500}>Edited at: {DateTime.fromISO(code?.last_edited).toLocaleString(DateTime.DATE_MED)}</Text>
-            <Text fz="xs" weight={500}>Created at: {DateTime.fromISO(code?.created_at).toLocaleString(DateTime.DATE_MED)}</Text>
+            <Text fz="xs" weight={500}><span className='creation-title'>Edited at:</span>  {DateTime.fromISO(code?.last_edited).toLocaleString(DateTime.DATE_MED)}</Text>
+            <Text fz="xs" weight={500}><span className='creation-title'>Created at:</span>  {DateTime.fromISO(code?.created_at).toLocaleString(DateTime.DATE_MED)}</Text>
           </Card.Section>
         </div>
       </Card>
