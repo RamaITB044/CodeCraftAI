@@ -5,6 +5,7 @@ import kebab from '../../assets/icons/kebab.svg'
 import Axios from 'axios';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie'
+import {icons} from '../../utils/getIcons'
 import { deleteCode } from '../../slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
@@ -64,7 +65,7 @@ const codeCard = ({ code }) => {
         <div onClick={handleCardClick} className='card-below'>
 
           <Center mt="sm" withBorder>
-            <Image src={`https://img.icons8.com/ios/64/306BFF/${code?.language}.png`} width={200} height={80} fit="contain" withPlaceholder />
+            <Image src={`https://img.icons8.com/ios/64/306BFF/${icons[code?.language]}.png`} width={200} height={80} fit="contain" withPlaceholder />
           </Center>
 
           <Text mt="sm" color="#306BFF" size="xl" weight={500}>

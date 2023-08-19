@@ -128,6 +128,7 @@
           }
 
           #pro-btn {
+            // background: linear-gradient(265.67deg, #00F09F -2.54%, #D527FC 87.9%);
             background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
             color: var(--text-primary);
             border: none;
@@ -154,6 +155,16 @@
           }
         }
       }
+    }
+
+    .solana-text{
+      
+background: linear-gradient(265.67deg, #00F09F -2.54%, #D527FC 87.9%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
     }
   
 

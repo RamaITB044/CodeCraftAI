@@ -27,9 +27,7 @@ router.post("/optimize", authMiddleware, async (req, res) => {
             return res.status(401).json({ error: "Not enough credits" });
         }
 
-        let initialPrompt = `\n\nCan you optimize the code? 
-        Also provide meaningful comments where necessary and put those comments inside the code. Each line should have a maximum of 15 words comment.
-        Just give me the code only and nothing else. \n`;
+        let initialPrompt = `\n\nCan you optimize the code? Just give me the code only and nothing else. Also provide time and space complexity at the end of the code inside comments.\n`;
 
         const resp = await gpt(initialPrompt + req.body.prompt);
 
@@ -121,9 +119,9 @@ router.post("/summarize", authMiddleware, async (req, res) => {
             return res.status(401).json({ error: "Not enough credits" });
         }
 
-        let initialPrompt = `Summarize the entire code and comment it out. Each comment line should have a maximum of 20 words. \n\n`;
+        let initialPrompt = `Add comment line to each line of the code \n\n`;
 
-        const resp = await gpt(initialPrompt + req.body.prompt);
+        const resp = await gpt(initialPrompt + req.body.prompt); 
 
         //deduct 1 credit from user
         user.credits.value -= 1;

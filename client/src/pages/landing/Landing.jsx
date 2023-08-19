@@ -58,7 +58,7 @@ const Landing = () => {
               The ultimate coding platform that lets you unleash the full potential of your coding skills with the power of our cutting edge Artificial Intelligence
             </p>
           </div>
-          <div className="hero-btn">Start Coding</div>
+          <div className="hero-btn" onClick={()=>navigate("/app/playground")}>Start Coding</div>
         </div>
       </section>
 

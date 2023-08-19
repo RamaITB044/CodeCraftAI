@@ -32,6 +32,14 @@
         border-radius: 10px;
         position: relative;
         padding: 20px;
+        
+
+        .dash-banner{
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            max-width: 600px;
+        }
 
         .title {
             font-weight: 500;
@@ -40,12 +48,28 @@
             line-height: 1.1em;
         }
 
+        .sub-title{
+            color:whitesmoke;
+        }
+
+        #white-btn{
+            background: none;
+            border:2px solid white;
+            color:white;
+
+
+        &:hover {
+            cursor: pointer;
+        }
+        }
+
         img {
-            width: 364px;
+            width: 350px;
             position: absolute;
             filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.4));
             right: 20px;
             bottom: 0px;
+            transition: 0.3s;
         }
     }
 
@@ -96,8 +120,6 @@
         padding: 20px;
         position: relative;
 
-
-
         .title {
             font-size: 32px;
             line-height: 1.3em;
@@ -111,7 +133,6 @@
     }
 
     .details-card {
-
         min-height: 200px;
         color: var(--text-primary);
         background-color: var(--app-primary);
@@ -135,5 +156,31 @@
                 color: var(--primary-blue);
             }
         }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .intro-card{
+         img{
+            width: 260px !important;
+         }
+    }
+    .codes-card{
+        img{
+           width: 150px !important;
+        }
+   }
+}
+
+@media only screen and (max-width: 960px) {
+    .intro-card{
+         img{
+            display: none !important;
+         }
+    }
+    .codes-card{
+         img{
+            display: none !important;
+         }
     }
 }

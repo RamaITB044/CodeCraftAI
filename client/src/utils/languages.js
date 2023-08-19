@@ -48,12 +48,12 @@ export const languageOptions = [
       label: "C# (Mono 6.6.0.161)",
       value: "csharp",
     },
-    {
-      id: 77,
-      name: "COBOL (GnuCOBOL 2.2)",
-      label: "COBOL (GnuCOBOL 2.2)",
-      value: "cobol",
-    },
+    // {
+    //   id: 77,
+    //   name: "COBOL (GnuCOBOL 2.2)",
+    //   label: "COBOL (GnuCOBOL 2.2)",
+    //   value: "cobol",
+    // },
     {
       id: 55,
       name: "Common Lisp (SBCL 2.0.0)",
@@ -91,22 +91,10 @@ export const languageOptions = [
       value: "fsharp",
     },
     {
-      id: 59,
-      name: "Fortran (GFortran 9.2.0)",
-      label: "Fortran (GFortran 9.2.0)",
-      value: "fortran",
-    },
-    {
       id: 60,
       name: "Go (1.13.5)",
       label: "Go (1.13.5)",
       value: "go",
-    },
-    {
-      id: 88,
-      name: "Groovy (3.0.3)",
-      label: "Groovy (3.0.3)",
-      value: "groovy",
     },
     {
       id: 61,
@@ -133,24 +121,11 @@ export const languageOptions = [
       label: "Lua (5.3.5)",
       value: "lua",
     },
-  
     {
       id: 79,
       name: "Objective-C (Clang 7.0.1)",
       label: "Objective-C (Clang 7.0.1)",
       value: "objectivec",
-    },
-    {
-      id: 65,
-      name: "OCaml (4.09.0)",
-      label: "OCaml (4.09.0)",
-      value: "ocaml",
-    },
-    {
-      id: 66,
-      name: "Octave (5.1.0)",
-      label: "Octave (5.1.0)",
-      value: "octave",
     },
     {
       id: 67,
@@ -171,28 +146,10 @@ export const languageOptions = [
       value: "php",
     },
     {
-      id: 43,
-      label: "Plain Text",
-      name: "Plain Text",
-      value: "text",
-    },
-    {
-      id: 69,
-      name: "Prolog (GNU Prolog 1.4.5)",
-      label: "Prolog (GNU Prolog 1.4.5)",
-      value: "prolog",
-    },
-    {
       id: 71,
       name: "Python (3.8.1)",
       label: "Python (3.8.1)",
       value: "python",
-    },
-    {
-      id: 80,
-      name: "R (4.0.0)",
-      label: "R (4.0.0)",
-      value: "r",
     },
     {
       id: 72,

@@ -30,13 +30,20 @@ const Dashboard = () => {
           <Grid.Col xs={12}>
             <div className='intro-card'>
               <img src={codz_avatar} alt="Codz Avatar" />
+              <div className="dash-banner">
               <div className="title">
-                <p>Code Smarter, With the </p>
-                <p>Power of Codz's AI.</p>
-              </div>
-              <div className="sub-title">
+                <p>Code Smarter, With the Power of Codz's AI.</p>
                 <p></p>
               </div>
+              <div className="sub-title">
+                <p>Codz's AI streamlines coding by automating processes and solving challenges.</p>
+              </div>
+              <div className='dashboard-btn' id='white-btn' onClick={()=>navigate("/app/playground")}>
+                Start Coding
+              </div>
+              </div>
+
+          
             </div>
           </Grid.Col>
 

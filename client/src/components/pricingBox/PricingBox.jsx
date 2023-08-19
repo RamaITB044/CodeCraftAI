@@ -146,7 +146,7 @@ const PricingBox = () => {
             </p>
             <br />
             <p className='sub-title'>
-              Currently we only support USDC payments using Solana Pay.
+              Currently we only support USDC payments using <span className='solana-text'>Solana Pay.</span> 
             </p>
           </section>
           <Checkout price={10} setShowPricing={setShowPricing} setShowConfirmation={setShowConfirmation}/>

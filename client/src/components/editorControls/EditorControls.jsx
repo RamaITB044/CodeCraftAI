@@ -100,13 +100,14 @@ const EditorControls = () => {
         checkStatus(token);
       })
       .catch((err) => {
+        setProcessing(false);
+        toast.error("Error in compiling code. Please try again!");
         let error = err.response ? err.response.data : err;
-        let status = err.response.status;
+        let status = err.response ? err.response.status : err;
         console.log("status", status);
         if (status === 429) {
           console.log("too many requests", status);
         }
-        setProcessing(false);
         console.log("catch block...", error);
       });
   };
@@ -137,8 +138,8 @@ const EditorControls = () => {
         return;
       }
     } catch (err) {
-      console.log("err", err);
       setProcessing(false);
+      console.log("err", err);
     }
   };
 
