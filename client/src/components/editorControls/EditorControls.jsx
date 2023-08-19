@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Axios from 'axios';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie'
+import rolling_logo from '../../assets/images/rolling.svg'
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -22,6 +23,9 @@ const EditorControls = () => {
   const [fileName, setFileName] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
   const [drawerOpened, handlers] = useDisclosure(false);
+  const [customInput, setCustomInput] = useState("");
+  const [outputDetails, setOutputDetails] = useState(null);
+  const [processing, setProcessing] = useState(false);
 
 
   const code = useSelector(state => state.code.value);
@@ -63,19 +67,91 @@ const EditorControls = () => {
     });
   }
 
+  const handleCompile = () => {
+    //give me the id of the language from langguageOptions array which is imported from utils
+    const lang = languageOptions.find((lang) => lang.value === language);
+    console.log("handleCompile");
+    setProcessing(true);
+    const formData = {
+      language_id: lang.id,
+      // encode source code in base64
+      source_code: btoa(code),
+      stdin: btoa(customInput),
+    };
+    const options = {
+      method: "POST",
+      url: import.meta.env.VITE_APP_RAPID_API_URL,
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        "content-type": "application/json",
+        "Content-Type": "application/json",
+        "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+        "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+        "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
+      },
+      data: formData,
+    };
+
+    Axios
+      .request(options)
+      .then(function (response) {
+        console.log("res.data", response.data);
+        const token = response.data.token;
+        checkStatus(token);
+      })
+      .catch((err) => {
+        let error = err.response ? err.response.data : err;
+        let status = err.response.status;
+        console.log("status", status);
+        if (status === 429) {
+          console.log("too many requests", status);
+        }
+        setProcessing(false);
+        console.log("catch block...", error);
+      });
+  };
+
+  const checkStatus = async (token) => {
+    const options = {
+      method: "GET",
+      url: import.meta.env.VITE_APP_RAPID_API_URL + "/" + token,
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
+        "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
+      },
+    };
+    try {
+      let response = await Axios.request(options);
+      let statusId = response.data.status?.id;
+
+      if (statusId === 1 || statusId === 2) {
+        setTimeout(() => {
+          checkStatus(token);
+        }, 2000);
+        return;
+      } else {
+        setProcessing(false);
+        setOutputDetails(response.data);
+        console.log("response.data", response.data);
+        return;
+      }
+    } catch (err) {
+      console.log("err", err);
+      setProcessing(false);
+    }
+  };
+
   return (
     <div className='Editor-controls'>
       <Modal opened={opened} onClose={close} title="Name your file" centered >
-
-        {/* <input type="text" onChange={(e)=>setFileName(e.target.value)} placeholder='Enter file name'/> */}
-        {/* <button onClick={handleCreateFile}>Save</button> */}
         <TextInput onChange={(e) => setFileName(e.target.value)} placeholder="Enter file name" data-autofocus />
         <br />
         <Button onClick={handleCreateFile} style={{ background: 'linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%)' }}>Save</Button>
       </Modal>
 
       <Drawer opened={drawerOpened} onClose={() => handlers.close()} position="right" size="24%">
-        
+
         <Container>
 
           <Textarea
@@ -84,6 +160,7 @@ const EditorControls = () => {
             minRows={15}
             maxRows={15}
             label="Input"
+            onChange={(e) => setCustomInput(e.target.value)}
           />
 
           <Textarea
@@ -92,8 +169,21 @@ const EditorControls = () => {
             minRows={15}
             maxRows={15}
             label="Output"
+            value={outputDetails !== null
+              ? `${atob(outputDetails?.stdout)}`
+              : null}
           />
-          <Button onClick={handleCreateFile} style={{ background: 'linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%)' }}>Run</Button>
+          <Flex justify="space-between" align="center">
+            <Button
+              onClick={handleCompile}
+              style={processing ? { background: 'none', border: '1px solid #306BFF' } : { background: 'linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%)' }}
+              disabled={processing}
+            >
+              {processing ? <img src={rolling_logo} alt="Processing" width={'24px'} height={'20px'} /> : 'Run'}
+            </Button>
+            <p>Status: <span>{outputDetails?.status?.description || null}</span></p>
+          </Flex>
+
         </Container>
 
       </Drawer>
