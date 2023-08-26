@@ -24,7 +24,7 @@ const Pricing = () => {
           <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
           <div className="nav-links">
             <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
+            <a onClick={() => navigate("/login")}><div className="nav-btn">Login</div></a>
           </div>
         </div>
       </nav>

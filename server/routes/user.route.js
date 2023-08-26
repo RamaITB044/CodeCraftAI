@@ -125,7 +125,7 @@ router.patch('/subscribe', authMiddleware, async (req, res) => {
         user.plan.start_date = new Date().toISOString();
         user.plan.end_date = new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString();
         await user.save();
-        return res.status(200).json({ plan: user.plan, message: 'Subscription successful' });
+        return res.status(200).json({ plan: user.plan, credits: user.credits.value, message: 'Subscription successful' });
     } catch (error) {
         return res.status(500).json({ message: 'Subscription Failed! Please try again later.', error: error.message });
     }

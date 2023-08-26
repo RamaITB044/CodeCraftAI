@@ -2,6 +2,11 @@
   background-color: var(--app-bg);
   width: 100%;
 
+  .mantine-f46qcc{
+    overflow-y: scroll;
+    max-height: 75vh;
+  }
+
   .mantine-Card-cardSection{
     padding-right: 4px !important;
   }
@@ -58,4 +63,11 @@
     }
   }
 
+}
+
+@media screen and (max-width: 480px){
+  .Codes .search-con{
+    flex-direction: column;
+    gap: 10px;
+  }
 }

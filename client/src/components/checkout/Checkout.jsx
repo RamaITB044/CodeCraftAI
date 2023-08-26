@@ -10,13 +10,37 @@ import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
 import Axios from 'axios';
 import { useDispatch } from "react-redux"
-import { setPlan } from '../../slices/userSlice';
+import { setPlan, setCredit } from '../../slices/userSlice';
 import rolling_logo from '../../assets/images/rolling.svg'
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
 const Checkout = ({ price, setShowPricing, setShowConfirmation }) => {
     const [loading, setLoading] = useState(false);
+    const [windowSize, setWindowSize] = useState({
+        width: 450,
+        height: 450,
+    });
+
+    useEffect(() => {
+        console.log(windowSize.width);
+        function handleResize() {
+            // Set window width/height to state
+            if (window.innerWidth < 700) {
+                setWindowSize({
+                    width:  350,
+                    height: 350,
+                });
+            }
+        }
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    },[])
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // Unique address that we can listen for payments to
@@ -48,7 +72,7 @@ const Checkout = ({ price, setShowPricing, setShowConfirmation }) => {
     useEffect(() => {
         console.log("Shop address: ", shopAddress);
         console.log("USDC address: ", usdcAddress);
-        const qr = createQR(url, 512)
+        const qr = createQR(url, windowSize.width)
         if (qrRef.current && amount.isGreaterThan(0)) {
             qrRef.current.innerHTML = ''
             qr.append(qrRef.current)
@@ -88,6 +112,7 @@ const Checkout = ({ price, setShowPricing, setShowConfirmation }) => {
                         if (resp.status === 200) {
                             setLoading(false);
                             dispatch(setPlan(resp.data.plan));
+                            dispatch(setCredit(resp.data.credits));
                             toast.success('Payment processed successfully!');
                             setShowConfirmation(true);
                             return;

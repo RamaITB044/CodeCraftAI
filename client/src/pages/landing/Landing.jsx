@@ -36,7 +36,7 @@ const Landing = () => {
           <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
           <div className="nav-links">
             <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
+            <a onClick={() => navigate("/login")}><div className="nav-btn">Login</div></a>
           </div>
         </div>
       </nav>
@@ -92,7 +92,7 @@ const Landing = () => {
             <br />
             <p className="playground-sub-title">Experience the future of coding with Codz's AI-powered code editor. Our innovative platform offers a range of AI-action buttons, including code optimization, generation, and debugging, all designed to enhance your coding experience.  </p>
             <br />
-            <p className="playground-sub-title"> Our AI bot <span id='gradient'>Codemon</span>, provides real-time support and guidance, making it easier than ever to write high-quality code. </p>
+            <p className="playground-sub-title"> Our <span id='gradient'>AI Chat</span>, provides real-time support and guidance, making it easier than ever to write high-quality code. </p>
           </div>
         </div>
       </section>
@@ -155,9 +155,10 @@ const Landing = () => {
           <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}
           <p className="join-title">
-            Unleash your ultimate coding powers using <span id='gradient'>Codz</span> today!
+            Sign up for <span id='gradient'>Codz</span> today and start coding like a pro!
+            {/* Unleash your ultimate coding powers using <span id='gradient'>Codz</span> today! */}
           </p>
-          <a href=""><div className="join-btn">Join Now</div></a>
+          <div className="join-btn" onClick={()=>{navigate('/register')}}>Join Now</div>
         </div>
       </section>
 

@@ -5,6 +5,7 @@ async function connectToDatabase(){
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            keepAlive: true,
         });
         console.log('MongoDB server connected');
     } catch (error) {

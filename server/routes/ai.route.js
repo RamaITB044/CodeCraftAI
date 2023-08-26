@@ -27,7 +27,7 @@ router.post("/optimize", authMiddleware, async (req, res) => {
             return res.status(401).json({ error: "Not enough credits" });
         }
 
-        let initialPrompt = `\n\nCan you optimize the code? Just give me the code only and nothing else. Also provide time and space complexity at the end of the code inside comments.\n`;
+        let initialPrompt = `\n\nCan you optimize the code? If the code is already optimized do not change anything do nothing. Just give me the code only and nothing else. Also provide time and space complexity at the end of the code inside comments.\n`;
 
         const resp = await gpt(initialPrompt + req.body.prompt);
 

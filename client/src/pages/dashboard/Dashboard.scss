@@ -27,7 +27,6 @@
     }
 
     .intro-card {
-        height: 250px;
         background: linear-gradient(94.22deg, #306BFF 21.72%, #040E3A 122.76%);
         border-radius: 10px;
         position: relative;
@@ -160,6 +159,10 @@
 }
 
 @media only screen and (max-width: 1024px) {
+    .Dashboard{
+        max-height: 99vh;
+        overflow-y: scroll;
+    }
     .intro-card{
          img{
             width: 260px !important;
@@ -182,5 +185,18 @@
          img{
             display: none !important;
          }
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .welcome-box h1{
+        font-size: 1.5rem !important;
+    }
+    .Dashboard .intro-card .title {
+        font-size: 25px !important;
+    }
+    .details-card{
+        flex-direction: column !important;
     }
 }

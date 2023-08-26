@@ -238,3 +238,13 @@
     }
   }
 }
+
+@media screen and (max-width: 480px){
+  .navbar{
+    height: 70px !important;
+  }
+
+  .auth-con{
+    padding-top: 50px !important;
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ActionBar.scss'
 import optimizeIcon from '../../assets/icons/optimize.svg'
 import debugIcon from '../../assets/icons/debug.svg'
@@ -11,25 +11,30 @@ import { updateCredits } from '../../slices/userSlice'
 import axios from 'axios';
 import Cookies from 'js-cookie'
 import toast from 'react-hot-toast';
+import { Button } from '@mantine/core';
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 const didToken = Cookies.get('token');
 
 const ActionBar = () => {
+    const [loading, setLoading] = useState(false);
     const code = useSelector(state => state.code.value);
     const creditsLeft = useSelector(state => state.user?.value?.credits?.value) - 1;
     const dispatch = useDispatch();
 
     const execute = async (operation) => {
+        setLoading(true);
         try {
-            const resp = await axios.post(APP_SERVER + '/api/ai/' + operation, { prompt: code.replace(/\s/g, "") }, {
+            const resp = await axios.post(APP_SERVER + '/api/ai/' + operation, { prompt: code }, {
                 headers: {
                     Authorization: "Bearer " + Cookies.get('token')
                 }
             });
+            setLoading(false);
             dispatch(updateCredits({creditsLeft, operation}));
-            dispatch(userCode(resp.data.text.slice(2)));
+            dispatch(userCode(resp.data.text.slice(1)));
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     }
@@ -72,22 +77,22 @@ const ActionBar = () => {
 
     return (
         <div className='ActionBar'>
-            <div className="action-btn" onClick={() => executeWithToast("optimize")}>
+            <Button className="action-btn" onClick={() => executeWithToast("optimize")} disabled={loading}>
                 <img src={optimizeIcon} alt="Optimize" />
                 Optimize
-            </div>
-            <div className="action-btn" onClick={() => executeWithToast("debug")}>
+            </Button>
+            <Button className="action-btn" onClick={() => executeWithToast("debug")} disabled={loading}>
                 <img src={debugIcon} alt="Debug" />
                 Debug
-            </div>
-            <div className="action-btn" onClick={() => executeWithToast("generate")}>
+            </Button>
+            <Button className="action-btn" onClick={() => executeWithToast("generate")} disabled={loading}>
                 <img src={generateIcon} alt="Generate" />
                 Generate
-            </div>
-            <div className="action-btn" onClick={() => executeWithToast("summarize")}>
+            </Button>
+            <Button className="action-btn" onClick={() => executeWithToast("summarize")} disabled={loading}>
                 <img src={summarizeIcon} alt="Summarize" />
                 Summarize
-            </div>
+            </Button>
             {/* <div className="action-btn">
                 <img src={translateIcon} alt="Translate" />
                 Translate

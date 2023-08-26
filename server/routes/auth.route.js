@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
                 expiry_date: Date.now() + 30 * 24 * 60 * 60 * 1000,
             },
             plan: {
-                plan_name: "Pro",
+                plan_name: "Basic",
                 start_date: Date.now(),
                 end_date: Date.now() + 2 * 365 * 24 * 60 * 60 * 1000, 
             }

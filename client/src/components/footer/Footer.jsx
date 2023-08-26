@@ -12,13 +12,11 @@ const Footer = () => {
         </div>
         <p>©2023 Codz</p>
         <div className='socials-con'>
-          <a href="" className='join-link' target="_blank" rel='noreferrer'><img className='disc' src={githubLogo} alt="GitHub" /></a>
-          <a href="" className='join-link' target="_blank" rel='noreferrer'><img className='disc' src={twitterLogo} alt="Twitter" /></a>
+          {/* <a href="" className='join-link' target="_blank" rel='noreferrer'><img className='disc' src={githubLogo} alt="GitHub" /></a> */}
+          <a href="https://twitter.com/Codz_AI" className='join-link' target="_blank" rel='noreferrer'><img className='disc' src={twitterLogo} alt="Twitter" /></a>
         </div>
       </div>
     </div>
-
-
   )
 }
 

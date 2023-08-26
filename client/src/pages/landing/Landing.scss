@@ -350,6 +350,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 2;
 
 
       img {
@@ -375,7 +376,11 @@
         background: linear-gradient(123.28deg, #306BFF 4.69%, #040E3A 289.88%);
         color: var(--text-primary);
         border-radius: 5px;
-        box-shadow: 3px 2px 12px rgba(0, 132, 255, 0.351);
+
+        &:hover {
+          box-shadow: 3px 2px 12px rgba(66, 164, 255, 0.24);
+          transition: 0.3s;
+        }
       }
 
     }
@@ -511,6 +516,10 @@
 
 /* For Mobile Phones Portrait or Landscape View */
 @media screen and (max-width: 480px) {
+  .Landing .navbar{
+    height: 70px !important;
+  }
+
   .hero {
     margin-top: 0px !important;
   }
@@ -533,7 +542,7 @@
 
   .intro {
     text-align: center;
-    padding: 0px !important;
+    padding: 0px 0px 50px 0px !important;
     margin-top: -80px;
 
     .intro-content {
@@ -576,11 +585,23 @@
     }
   }
 
+  .Landing .join .join-content img {
+    width: 25%;
+  }
+
   .playground-title, .feature-title, .join-title{
-    font-size: 40px !important;
+    font-size: 25px !important;
   }
   .intro-sub-title,.playground-sub-title, .feature-sub-title, .join-sub-title{
     font-size: 18px !important;
+  }
+
+  .join{
+    padding: 100px 0px !important;
+
+    .join-mid{
+      height: 400px !important;
+    }
   }
 
 }

@@ -46,12 +46,15 @@ const userSlice = createSlice({
         setPlan: (state, action) => {
             state.value.plan = action.payload;
         },
+        setCredit: (state, action) => {
+            state.value.credits = action.payload;
+        },
         updatePlan: (state, action) => {
             state.value.plan = { ...state.value.plan, ...action.payload };
         },
     },
 });
 
-export const { setUser, updateCredits, addCode, updateCode, deleteCode, setPlan, updatePlan } = userSlice.actions;
+export const { setUser, updateCredits, addCode, updateCode, deleteCode, setPlan, updatePlan, setCredit } = userSlice.actions;
 
 export default userSlice;
