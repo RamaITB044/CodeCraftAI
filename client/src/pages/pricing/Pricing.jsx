@@ -33,7 +33,7 @@ const Pricing = () => {
       <img src={loginRight} className="login-right" alt="gradient" />
       <Container size={1200} className='pricing-con'>
         <PricingBox />
-        
+
       </Container>
       <Footer />
     </motion.div>

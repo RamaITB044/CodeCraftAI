@@ -14,6 +14,7 @@ import Axios from 'axios';
 import confirm_logo from '../../assets/images/confirm.svg'
 import rolling_logo from '../../assets/images/rolling.svg'
 import { motion } from 'framer-motion';
+import spay from '../../assets/icons/spay.svg'
 
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
@@ -48,7 +49,7 @@ const PricingBox = () => {
   }
 
   return (
-     <motion.div
+    <motion.div
       className="pricingBox"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -74,10 +75,10 @@ const PricingBox = () => {
             <p className='title'>
               Pricing
             </p>
-            <br />
             <p className='sub-title'>
               Pick a plan that fits your workflow
             </p>
+              <img src={spay} alt="Powered by Solana Pay" />
           </section>
           <section className="pricing-content">
             <div className='card'>
@@ -146,10 +147,10 @@ const PricingBox = () => {
             </p>
             <br />
             <p className='sub-title'>
-              Currently we only accept USDC payments using <span className='solana-text'>Solana Pay.</span> 
+              Currently we only accept USDC payments using <span className='solana-text'>Solana Pay.</span>
             </p>
           </section>
-          <Checkout price={10} setShowPricing={setShowPricing} setShowConfirmation={setShowConfirmation}/>
+          <Checkout price={10} setShowPricing={setShowPricing} setShowConfirmation={setShowConfirmation} />
         </>
       }
     </motion.div>

@@ -47,7 +47,7 @@ const userSlice = createSlice({
             state.value.plan = action.payload;
         },
         setCredit: (state, action) => {
-            state.value.credits = action.payload;
+            state.value.credits.value = action.payload;
         },
         updatePlan: (state, action) => {
             state.value.plan = { ...state.value.plan, ...action.payload };
