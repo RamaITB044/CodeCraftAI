@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Footer from '../../components/footer/Footer';
 import rolling_logo from '../../assets/images/rolling.svg'
+import Navbar from '../../components/navbar/Navbar';
 
 const APP_SERVER = import.meta.env.VITE_APP_SERVER;
 
@@ -78,15 +79,7 @@ const Register = () => {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.2 }}>
-      <nav className="navbar">
-        <div className="navbar-content">
-          <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
-          <div className="nav-links">
-            <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a onClick={() => navigate("/register")}><div className="nav-btn">Use Now</div></a>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
       <img src={loginLeft} className="login-left" alt="gradient" />
       <img src={loginCard} className="login-center" alt="gradient" />
       <img src={loginRight} className="login-right" alt="gradient" />

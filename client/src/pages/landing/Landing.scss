@@ -338,7 +338,8 @@
     .join-mid {
       position: absolute;
       top: 10px;
-      left: 400px;
+      left: 50%;
+      transform: translate(-50%);
       opacity: 80%;
       z-index: 1;
     }
@@ -362,7 +363,7 @@
         font-size: 50px;
         font-weight: 600;
         text-align: center;
-        max-width: 600px;
+        max-width: 650px;
         padding-top: 20px;
         padding-bottom: 20px;
       }
@@ -428,10 +429,6 @@
       width: 100% !important;
     }
   }
-
-  .join-mid {
-    left: 300px !important;
-  }
 }
 
 /* For Tablet or Old Laptop View */
@@ -472,9 +469,6 @@
       width: 100% !important;
     }
   }
-  .join-mid {
-    left: 0px !important;
-  }
 }
 
 /* For Mobile Portrait View */
@@ -503,10 +497,6 @@
         margin-left: -60%;
       }
     }
-  }
-
-  .join-mid {
-    left: -200px !important;
   }
 }
 

@@ -201,7 +201,7 @@ const EditorControls = () => {
       </div>
       <Select
         className='language-con'
-        defaultValue={languageOptions[0].value}
+        defaultValue={language}
         onChange={(lang) => dispatch(editorLanguage(lang))}
         transition="scale-y"
         transitionDuration={180}

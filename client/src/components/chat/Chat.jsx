@@ -33,7 +33,7 @@ const Chat = () => {
             return;
         }
 
-        let lastMessage = { author: "user", message: userMessage };
+        let lastMessage = { role: "user", content: userMessage };
         dispatch(addMessage(lastMessage));
         
         let lastFiveMessages = new Array();
@@ -61,14 +61,14 @@ const Chat = () => {
             });
             let operation = "chat";
             dispatch(updateCredits({creditsLeft, operation}));
-            dispatch(addMessage({ author: "bot", message: await resp.data.reply }));
+            dispatch(addMessage({ role: "assistant", content: await resp.data.reply }));
             setLoading(false);
             // dispatch(updateCredits({creditsLeft, operation}));
             // dispatch(userCode(resp.data.text.slice(2)));
         } catch (error) {
-            dispatch(deleteLastMessage());
+            toast.error("Something went wrong!");
+            // dispatch(deleteLastMessage());
             setLoading(false);
-            toast.error("Something went wrong!")
             console.log(error);
         }
     }
@@ -80,14 +80,14 @@ const Chat = () => {
     return (
         <Container className='Chat-con'>
             <Container className="chat-box">
-                {messages.length > 0 ? messages.map((val, idx) => {
-                    if (val.author === "bot") {
+                {messages?.length > 0 ? messages.map((val, idx) => {
+                    if (val.role === "assistant") {
                         return <div className='bot' key={idx}>
-                            <p>{val.message}</p>
+                            <p>{val.content}</p>
                         </div>
                     } else {
                         return <div className='user' key={idx}>
-                            <p>{val.message}</p>
+                            <p>{val.content}</p>
                         </div>
                     }
                 }) : <p>No messages</p>}

@@ -5,12 +5,10 @@ const userSchema = new Schema({
     magic_id: {
         type: String,
         default: "",
-        unique: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true,
     },
     userName:{
         type: String,

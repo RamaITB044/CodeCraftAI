@@ -4,7 +4,7 @@ const chatSlice = createSlice({
     name: 'chat',
     initialState: {
         messages: [
-            { author: "bot", message: "Hi, How may I help you today?" },
+            { role: "assistant", content: "Hi, How may I help you today?" }
         ]
     },
     reducers: {
@@ -23,7 +23,7 @@ const chatSlice = createSlice({
             state.messages.pop();
         },
         clearChat(state) {
-            state.messages = [{ author: "bot", message: "Hi, How may I help you today?" },];
+            state.messages = [{ role: "assistant", content: "Hi, How may I help you today?" }];
         }
     }
 });

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value:{}
+    value:{},
+    sidebarOpened: false,
 }
 const userSlice = createSlice({
     name: 'user',
@@ -52,9 +53,12 @@ const userSlice = createSlice({
         updatePlan: (state, action) => {
             state.value.plan = { ...state.value.plan, ...action.payload };
         },
+        setSidebar: (state, action) =>{
+            state.sidebarOpened = action.payload;
+        }
     },
 });
 
-export const { setUser, updateCredits, addCode, updateCode, deleteCode, setPlan, updatePlan, setCredit } = userSlice.actions;
+export const { setUser, updateCredits, addCode, updateCode, deleteCode, setPlan, updatePlan, setCredit, setSidebar } = userSlice.actions;
 
 export default userSlice;

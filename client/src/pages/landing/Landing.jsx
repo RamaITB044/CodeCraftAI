@@ -20,6 +20,7 @@ import join_grad from '../../assets/gradients/join-grad.png'
 import revolutionizing from '../../assets/images/Revolutionizing.svg'
 import Footer from '../../components/footer/Footer'
 import { motion } from "framer-motion";
+import Navbar from '../../components/navbar/Navbar'
 
 
 const Landing = () => {
@@ -31,15 +32,7 @@ const Landing = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <nav className="navbar">
-        <div className="navbar-content">
-          <img onClick={() => navigate("/")} src={fullLogo} alt="logo" />
-          <div className="nav-links">
-            <div onClick={() => navigate("/pricing")}>Pricing</div>
-            <a onClick={() => navigate("/login")}><div className="nav-btn">Login</div></a>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
       {/* <img className='hero-left' src={landingHero} alt="" />
       <img className='hero-right' src={landingHero} alt="" /> */}
       <img className='hero-mid' src={land_grad} alt="gradient" />
@@ -155,10 +148,10 @@ const Landing = () => {
           <img src={codz_hero} alt="logo" />
           {/* <img src={dotted_circle} alt="circle" /> */}
           <p className="join-title">
-            Sign up for <span id='gradient'>Codz</span> today and start coding like a pro!
+            Start your coding journey with <span id='gradient'>Codz</span> today!
             {/* Unleash your ultimate coding powers using <span id='gradient'>Codz</span> today! */}
           </p>
-          <div className="join-btn" onClick={()=>{navigate('/register')}}>Join Now</div>
+          <div className="join-btn" onClick={()=>{navigate('/register')}}>Sign Up</div>
         </div>
       </section>
 

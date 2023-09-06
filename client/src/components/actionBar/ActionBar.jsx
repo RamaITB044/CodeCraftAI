@@ -19,20 +19,22 @@ const didToken = Cookies.get('token');
 const ActionBar = () => {
     const [loading, setLoading] = useState(false);
     const code = useSelector(state => state.code.value);
+    const language = useSelector(state => state.code.language);
     const creditsLeft = useSelector(state => state.user?.value?.credits?.value) - 1;
     const dispatch = useDispatch();
 
     const execute = async (operation) => {
+        if(!code || creditsLeft < 0) throw new Error('Invalid code or not enough credits');
         setLoading(true);
         try {
-            const resp = await axios.post(APP_SERVER + '/api/ai/' + operation, { prompt: code }, {
+            const resp = await axios.post(APP_SERVER + '/api/ai/' + operation, { prompt: code, language: language }, {
                 headers: {
                     Authorization: "Bearer " + Cookies.get('token')
                 }
             });
             setLoading(false);
             dispatch(updateCredits({creditsLeft, operation}));
-            dispatch(userCode(resp.data.text.slice(1)));
+            dispatch(userCode(resp.data.text));
         } catch (error) {
             setLoading(false);
             console.log(error);
